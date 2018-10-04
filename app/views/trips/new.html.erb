@@ -1,1 +1,10 @@
-new trip
+<h1>Where are we headed next?</h1>
+<p>Create a new trip</p>
+
+<%= form_for @trip do |f| %>
+  <%= f.hidden_field :user_id %>
+  <%= f.text_field :name %>
+  <%= f.text_field :start_date %>
+  <%= f.check_box :status %> Trip Completed
+  <%= f.submit %>
+<% end %>

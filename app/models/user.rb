@@ -9,6 +9,16 @@ class User < ApplicationRecord
   validates :password, presence: true
   validates :password_confirmation, presence: true
 
+
+  def self.find_or_create_by_omniauth(auth_hash)
+    oauth_email = auth_hash["info"]["email"]
+    @user = User.find_or_create_by(email: oauth_email) do |u|
+      u.username = auth_hash['info']['name']
+      u.email = auth_hash['info']['email']
+      u.password = SecureRandom.hex
+    end
+  end
+
   # scope :destinations,
 
   # def destinations

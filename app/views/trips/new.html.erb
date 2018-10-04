@@ -3,8 +3,8 @@
 
 <%= form_for @trip do |f| %>
   <%= f.hidden_field :user_id %>
-  <%= f.text_field :name %>
-  <%= f.text_field :start_date %>
-  <%= f.check_box :status %> Trip Completed
+  <%= f.text_field :name %><br>
+  <%= f.text_field :start_date %><br>
+  <%= f.check_box :completed, {}, 1, 0 %> Trip Completed?<br>
   <%= f.submit %>
 <% end %>

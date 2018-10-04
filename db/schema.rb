@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2018_10_04_171829) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "planned_destinations", force: :cascade do |t|
+  create_table "plans", force: :cascade do |t|
     t.integer "trip_id"
     t.integer "destination_id"
     t.datetime "created_at", null: false

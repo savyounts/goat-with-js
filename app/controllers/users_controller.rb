@@ -18,4 +18,10 @@ class UsersController < ApplicationController
     @user = User.find_by(params[:id]) if logged_in?
   end
 
+
+  private
+    def user_params
+      params.require(:user).permit(:username, :password, :password_confirmation)
+    end
+
 end

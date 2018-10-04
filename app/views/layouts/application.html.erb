@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <%= link_to "home", root_path %>
+        <%= link_to "destinations", destinations_path %>
+        <%= link_to "login", new_session_path %>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

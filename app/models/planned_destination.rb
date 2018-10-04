@@ -1,0 +1,2 @@
+class PlannedDestination < ApplicationRecord
+end

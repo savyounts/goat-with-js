@@ -4,7 +4,7 @@ class DestinationsController < ApplicationController
   end
 
   def new
-    @destination = Destination.new
+    @destination = current_user.custom_destinations.build
   end
 
   def create

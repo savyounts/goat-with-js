@@ -4,24 +4,26 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if request.env["onmiauth.auth"]
-      @user = User.find_or_create_by_omniauth()
-      session[:user_id] = @user.id
-      redirect_to user_path(@user)
-    else
+    # if request.env["onmiauth.auth"]
+    #   @user = User.find_or_create_by_omniauth(auth)
+    #   session[:user_id] = @user.id
+    #   redirect_to user_path(@user)
+    # else
       @user = User.find_by(username: params[:username])
       if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
         redirect_to user_path(@user)
       else
-        render '/login'
+        redirect_to '/login'
       end
-    end
+    # end
   end
 
 
 
   def destroy
+    session.clear
+    redirect_to root_path
   end
 
   private

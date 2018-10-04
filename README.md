@@ -1,7 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Get Out And Travel (GOAT) is a rails app to help you plan and inspire new travels.
 
 Things you may want to cover:
 

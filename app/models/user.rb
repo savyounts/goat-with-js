@@ -7,9 +7,9 @@ class User < ApplicationRecord
 
   # scope :destinations,
 
-  def destinations
-    binding.pry
-    destinations = []
-    self.trips.collect {|trip| destinations << trip.destinations}
-  end
+  # def destinations
+  #   # binding.pry
+  #   destinations = []
+  #   self.trips.each {|trip| destinations << trip.destinations}.flatten
+  # end
 end

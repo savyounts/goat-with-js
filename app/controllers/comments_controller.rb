@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :require_login
 
   def new
-    if !Destination.exists?(params[:destination_id])
+    if Destination.exists?(params[:destination_id])
       @destination = Destination.find_by(id: params[:destination_id])
       @comment = @destination.comments.build(user_id: current_user.id)
     else

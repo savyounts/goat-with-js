@@ -17,3 +17,8 @@
   <%= link_to "Update this destination", edit_destination_path(@destination) %>
   <%= link_to "Delete this destination", @destination, method: :delete %>
 <% end %>
+
+
+<br><br>
+
+<%= link_to "Leave a suggestions", new_destination_comment_path(@destination) %>

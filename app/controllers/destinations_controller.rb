@@ -1,6 +1,6 @@
 class DestinationsController < ApplicationController
-  before_action :authenticate
-  skip_before_action :authenticate, :only => [:index, :show]
+  before_action :require_login
+  skip_before_action :logged_in?, :only => [:index, :show]
 
   def index
     @destinations = Destination.all

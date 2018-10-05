@@ -1,5 +1,5 @@
 class PlansController < ApplicationController
-  before_action :authenticate
+  before_action :require_login
 
   def new
     @plan = Plan.new(destination_id: params[:destination_id])
@@ -11,7 +11,9 @@ class PlansController < ApplicationController
   end
 
   def destroy
-
+    @plan =  Plan.find_by(id: params[:id])
+    @plan.destroy
+    redirect_to user_path(current_user)
   end
 
   private

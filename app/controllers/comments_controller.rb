@@ -2,8 +2,12 @@ class CommentsController < ApplicationController
   before_action :require_login
 
   def new
-    @destination = Destination.find_by(id: params[:destination_id])
-    @comment = @destination.comments.build(user_id: current_user.id)
+    if !Destination.exists?(params[:destination_id])
+      @destination = Destination.find_by(id: params[:destination_id])
+      @comment = @destination.comments.build(user_id: current_user.id)
+    else
+      redirect_to destinations_path
+    end
   end
 
   def create
@@ -16,8 +20,13 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find_by(id: params[:id])
-    @destination = @comment.destination
+    @destination = Destination.find_by(id: params[:destination_id])
+    if @destination.nil?
+      redirect_to destinations_path
+    else
+      @comment = @destination.comments.find_by(id: params[:id])
+      redirect_to destination_path(@destination) if @comment.nil?
+    end
   end
 
   def update

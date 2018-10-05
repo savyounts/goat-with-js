@@ -3,7 +3,11 @@ class TripsController < ApplicationController
 
 
   def new
-    @trip = current_user.trips.new
+    if !User.exists?(params[:user_id]) || current_user != User.find(params[:user_id])
+      redirect_to user_path(current_user)
+    else
+      @trip = current_user.trips.new
+    end
   end
 
   def create
@@ -17,7 +21,11 @@ class TripsController < ApplicationController
   end
 
   def edit
-    @trip = Trip.find_by(id: params[:id])
+    if !User.exists?(params[:user_id]) || current_user != User.find(params[:user_id])
+      redirect_to user_path(current_user)
+    else
+      @trip = Trip.find_by(id: params[:id])
+    end
   end
 
   def update

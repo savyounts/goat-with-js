@@ -2,8 +2,12 @@ class PlansController < ApplicationController
   before_action :require_login
 
   def new
-    @plan = Plan.new(destination_id: params[:destination_id])
-    @plan.build_trip(user_id: current_user.id)
+    if !Destination.exists?(params[:destination_id])
+      redirect_to destinations_path
+    else
+      @plan = Plan.new(destination_id: params[:destination_id])
+      @plan.build_trip(user_id: current_user.id)
+    end
   end
 
   def create

@@ -20,5 +20,15 @@
 
 
 <br><br>
-
-<%= link_to "Leave a suggestions", new_destination_comment_path(@destination) %>
+<p>Comments:</p>
+<div class="comment-div">
+  <% @destination.comments.each do |c| %>
+    <div class="comment">
+      <%= c.content %><br>
+      <%= c.user.username %><br>
+      <%= link_to "edit", edit_destination_comment_path(@destination, c) if c.user == @current_user %>
+    </div><br>
+  <% end %>
+</div>
+<br><br>
+<%= link_to "Leave a suggestion", new_destination_comment_path(@destination) %>

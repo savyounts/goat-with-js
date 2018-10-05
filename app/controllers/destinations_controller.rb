@@ -31,6 +31,7 @@ class DestinationsController < ApplicationController
   end
 
   def show
+    current_user
     @destination = Destination.find_by(id: params[:id])
   end
 

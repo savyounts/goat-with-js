@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   resources :plans, only: [:create, :destroy]
   resources :trips, only: [:index, :create, :update, :destroy]
+  resources :comments, only: [:create, :update]
 
   resources :users, only: [:new, :show, :create] do
     resources :trips, only: [:show, :edit, :new]
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :destinations do
     resources :plans, only: [:new]
+    resources :comments, only: [:new, :edit]
   end
 
 

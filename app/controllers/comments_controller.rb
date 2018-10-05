@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
       redirect_to destinations_path
     else
       @comment = @destination.comments.find_by(id: params[:id])
-      redirect_to destination_path(@destination) if @comment.nil?
+      redirect_to destination_path(@destination) if @comment.nil? || !verify(@comment)
     end
   end
 

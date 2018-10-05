@@ -24,9 +24,11 @@ class TripsController < ApplicationController
     if !User.exists?(params[:user_id]) || current_user != User.find(params[:user_id])
       redirect_to user_path(current_user)
     else
-      @trip = Trip.find_by(id: params[:id])
+      @trip = current_user.trips.find_by(id: params[:id])
+      redirect_to trip_path(@trip) if @trip.nil? || !verify(@trip)
     end
   end
+
 
   def update
     trip = Trip.find_by(id: params[:id])

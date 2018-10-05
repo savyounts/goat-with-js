@@ -1,9 +1,13 @@
 class DestinationsController < ApplicationController
-  before_action :require_login
+  before_action :require_login, :current_user
   skip_before_action :require_login, :only => [:index, :show]
 
   def index
-    @destinations = Destination.all
+    if !params[:user_id]
+      @destinations = Destination.all
+    else
+      @destinations = current_user.custom_destinations
+    end  
   end
 
   def new

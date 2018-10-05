@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
   def require_login
      redirect_to '/login' unless logged_in?
   end
+
+  def verify(instance)
+    instance.user == current_user
+  end
 end

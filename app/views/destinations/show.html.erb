@@ -1,4 +1,4 @@
-<h1>Welcome to <%= @destination.name %>.</h1>
+<h1>Experience <%= @destination.name %>.</h1>
 <%= image_tag("#{@destination.image_url}") %><br>
 <br>
 
@@ -7,7 +7,9 @@
 <p>Must-Do's: <%= @destination.must_dos %></p> <br>
 <p>Don't-Do's: <%= @destination.dont_dos %></p> <br>
 <p>Day-trips: <%= @destination.day_trips %></p> <br>
-<p>trips: <% @destination.trips.each {|t| t.name} %></p> <br>
+<p>trips: <% @destination.trips.each do |t|  %>
+              <%= t.name %>
+          <% end %></p> <br>
 
 <br><br>
 <%= link_to "Add to my trip", new_destination_plan_path(@destination) %>

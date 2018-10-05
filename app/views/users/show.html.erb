@@ -1,5 +1,6 @@
 <h1>My trips.</h1>
+<%= @user.username %><br>
 <%= link_to "Create a new trip.", new_user_trip_path(@user) %>
-<% @user.trips do |t| %>
+<% @user.trips.each do |t| %>
   <div><%= t.name %></div>
 <% end %>

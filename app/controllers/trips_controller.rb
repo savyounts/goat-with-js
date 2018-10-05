@@ -7,8 +7,9 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = Trip.create(trip_params)
-    redirect_to user_trip_path(current_user, @trip)
+    trip = Trip.create(trip_params)
+    current_user.trips << trip
+    redirect_to user_trip_path(current_user, trip)
   end
 
   def edit
@@ -16,6 +17,9 @@ class TripsController < ApplicationController
   end
 
   def update
+    trip = Trip.find_by(id: params[:id])
+    trip.update(trip_params)
+    redirect_to user_trip_path(current_user, trip)
   end
 
   def show

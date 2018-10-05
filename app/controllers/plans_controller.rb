@@ -7,7 +7,7 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.create(plan_params)
-    redirect_to destination_path(@plan.destination)
+    redirect_to user_path(current_user)
   end
 
   def destroy
@@ -17,7 +17,7 @@ class PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:destination_id, trip_attributes: [:name])
+    params.require(:plan).permit(:destination_id, :trip_id, trip_attributes: [:name, :user_id])
   end
 
 end

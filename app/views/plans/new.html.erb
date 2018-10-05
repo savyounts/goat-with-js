@@ -3,10 +3,11 @@
     <%= f.hidden_field :destination_id %>
     <%= f.label :trip_id, value: "select a trip" %><br>
     <%= f.collection_select :trip_id, @current_user.trips, :id, :name, include_blank: "Create new trip." %><br>
-
-    <%= f.label :trip_id, value: "or create a new trip" %><br>
-    <%= f.fields_for @plan.build_trip do |t| %>
-      <%= t.text_field :name, placeholder: "new trip name." %><br>
-    <% end %>
+<!--
+    f.label :trip_id, value: "or create a new trip" %><br>
+    f.fields_for :trip_id, @plan.build_trip do |t| %>
+      t.hidden_field :user_id, value: @current_user.id %>
+      t.text_field :name, placeholder: "new trip name." %><br>
+    end %> -->
     <%= f.submit "add #{@plan.destination.name}"%>
   <% end %>

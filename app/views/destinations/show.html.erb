@@ -7,6 +7,7 @@
 <p>Must-Do's: <%= @destination.must_dos %></p> <br>
 <p>Don't-Do's: <%= @destination.dont_dos %></p> <br>
 <p>Day-trips: <%= @destination.day_trips %></p> <br>
+<p>trips: <% @destination.trips.each {|t| t.name} %></p> <br>
 
 <br><br>
 <%= link_to "Add to my trip", new_destination_plan_path(@destination) %>

@@ -8,7 +8,7 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.create(trip_params)
-    redirect_to trip_path(@trip)
+    redirect_to user_trip_path(current_user, @trip)
   end
 
   def edit

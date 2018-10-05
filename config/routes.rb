@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :trips, only: [:show, :new, :edit, :update, :destroy, :create]
-  resources :users, only: [:new, :show, :create]
   resources :sessions, only: [:create]
   resources :plans, only: [:create, :destroy]
+
+  resources :users, only: [:new, :show, :create] do
+    resources :trips
+  end
 
   resources :destinations do
     resources :plans, only: [:new]

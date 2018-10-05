@@ -3,11 +3,12 @@ class PlansController < ApplicationController
 
   def new
     @plan = Plan.new(destination_id: params[:destination_id])
+    @plan.build_trip(user_id: current_user.id)
   end
 
   def create
-    @plan = Plan.create(plan_params)
-    redirect_to user_path(current_user)
+      @plan = Plan.create(plan_params)
+      redirect_to user_path(current_user)
   end
 
   def destroy

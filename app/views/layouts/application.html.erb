@@ -14,8 +14,9 @@
       <nav>
         <%= link_to "home", root_path %>
         <%= link_to "destinations", destinations_path %>
-        <%= link_to "login", '/login'%>
-        <%= link_to "logout", '/logout'  %>
+        <%= link_to "my trips", user_path(@current_user) if @current_user %>
+        <%= link_to "login", '/login' if !@current_user%>
+        <%= link_to "logout", '/logout' if @current_user %>
       </nav>
     </header>
     <%= yield %>

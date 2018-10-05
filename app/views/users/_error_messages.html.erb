@@ -1,0 +1,10 @@
+<% if instance.errors.any? %>
+<div id="error_explanation">
+
+  <ul>
+    <% instance.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>

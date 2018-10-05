@@ -3,4 +3,7 @@ class Destination < ApplicationRecord
 
     has_many :plans
     has_many :trips, through: :plans
+
+    validates :name, :city, :country, :description, presence: true
+
 end

@@ -7,9 +7,13 @@ class TripsController < ApplicationController
   end
 
   def create
-    trip = Trip.create(trip_params)
-    current_user.trips << trip
-    redirect_to user_trip_path(current_user, trip)
+    @trip = Trip.new(trip_params)
+    if @trip.save
+      current_user.trips << @trip
+      redirect_to user_trip_path(current_user, @trip)
+    else
+      render 'new'
+    end
   end
 
   def edit

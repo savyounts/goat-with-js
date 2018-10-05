@@ -1,6 +1,6 @@
 class DestinationsController < ApplicationController
   before_action :require_login
-  skip_before_action :logged_in?, :only => [:index, :show]
+  skip_before_action :require_login, :only => [:index, :show]
 
   def index
     @destinations = Destination.all
@@ -11,9 +11,13 @@ class DestinationsController < ApplicationController
   end
 
   def create
-    @destination = Destination.create(destination_params)
-    @destination.creator = current_user
-    redirect_to destination_path(@destination)
+    @destination = Destination.new(destination_params)
+    if @destination.save
+      @destination.creator = current_user
+      redirect_to destination_path(@destination)
+    else
+      render 'new'
+    end
   end
 
   def edit

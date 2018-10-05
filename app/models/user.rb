@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   has_secure_password
   validates :username, presence: true
-  validates :username, uniqueness:{case_sensitive: false}
+  validates :username, uniqueness:{case_sensitive: false, message: "this username is already taken"}
   validates :password, presence: true
   validates :password_confirmation, presence: true
 

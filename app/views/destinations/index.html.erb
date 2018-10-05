@@ -1,1 +1,10 @@
-all destinations
+<h1>Destinations.</h1> <br>
+
+
+<p>
+  <% @destinations.each do |d| %>
+    <div><%= link_to d.name, destination_path(d) %><br>
+      <%= d.image_url %><br>
+    </div>
+  <% end %>
+</p>

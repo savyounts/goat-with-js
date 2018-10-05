@@ -1,6 +1,9 @@
 class DestinationsController < ApplicationController
+  before_action :authenticate
+  skip_before_action :authenticate, :only => [:index, :show]
 
   def index
+    @destinations = Destination.all
   end
 
   def new
@@ -14,12 +17,23 @@ class DestinationsController < ApplicationController
   end
 
   def edit
+    @destination = Destination.find_by(id: params[:id])
   end
 
   def update
+    @destination = Destination.find_by(id: params[:id])
+    @destination.update(destination_params)
+    redirect_to destination_path(@destination)
+  end
+
+  def show
+    @destination = Destination.find_by(id: params[:id])
   end
 
   def destroy
+    @destination = Destination.find_by(id: params[:id])
+    @destination.destroy
+    redirect_to destinations_path
   end
 
 private

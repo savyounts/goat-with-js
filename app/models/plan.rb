@@ -5,4 +5,5 @@ class Plan < ApplicationRecord
   accepts_nested_attributes_for :trip
 
 
+
 end

@@ -3,7 +3,7 @@ class DestinationsController < ApplicationController
   skip_before_action :require_login, :only => [:index, :show]
 
   def index
-    if params[:user_id] && current_user == User.find_by(id: params[:id])
+    if params[:user_id] && current_user == User.find_by(id: params[:user_id])
       @destinations = current_user.custom_destinations
     else
       @destinations = Destination.all

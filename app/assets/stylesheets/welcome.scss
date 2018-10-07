@@ -3,9 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  background-image: url('/assets/images/homepage.png');
+  background-image: url(homepage.png);
   background-size: cover;
 }
+
 
 div.homepage_header {
   position: absolute;
@@ -16,11 +17,21 @@ div.homepage_header {
 .header_top {
   text-align: center;
   font-size: 1em;
+  color: white;
 }
 
 .header_bottom {
   text-align: center;
   font-size: 4em;
+}
+
+.homepage_header a {
+  color: black;
+  text-decoration: none;
+  background-color: white;
+  padding: 3px 18px;
+  position: absolute;
+  left: 40%;
 }
 
 #everywhere {

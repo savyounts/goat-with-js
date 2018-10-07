@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+   font-family: 'Raleway', sans-serif;
+ }
+
+nav {
+  text-align: right;
+}
+ nav a {
+   text-decoration: none;
+   padding: 3px 10px;
+}

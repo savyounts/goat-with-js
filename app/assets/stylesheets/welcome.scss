@@ -7,8 +7,22 @@ body {
   background-size: cover;
 }
 
-.homepage_header {
-  position: relative;
-  margin: auto;
-  bottom: 100px;
+div.homepage_header {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+}
+
+.header_top {
+  text-align: center;
+  font-size: 1em;
+}
+
+.header_bottom {
+  text-align: center;
+  font-size: 4em;
+}
+
+#everywhere {
+  font-weight: bold;
 }

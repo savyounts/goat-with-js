@@ -21,6 +21,11 @@
 nav {
   padding: 1% 0;
   text-align: right;
+  width: 100%;
+  background-image: url(banner.png);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
  nav a {
    text-decoration: none;
@@ -29,10 +34,11 @@ nav {
 
 }
 
-#logo-link {
+#logo-link a{
   position: absolute;
   left: 5%;
-  color: black;
-  padding: 4px 6px;
+  color: #000;
+  background-color: #fff;
+  padding: 2px 12px;
 
 }

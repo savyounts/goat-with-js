@@ -12,6 +12,40 @@ h1 {
   left: 2.75%;
 }
 
+// SHOW PAGE STYLES
+h1.header-box {
+  top: 50%;
+  font-size: 4em;
+  padding: 5px 40px;
+  display: inline-block;
+  color: #000;
+  background-color: #fff;
+  position: absolute;
+  margin: auto;
+
+}
+
+#header-image {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 300px;
+  
+}
+
+.dest-info {
+  display: inline-block;
+  float:left;
+  width: 50%;
+}
+
+.comments {
+  display: inline-block;
+  float:left;
+  width: 50%;
+}
+
 
 
 // INDIVIDUAL DIV STYLES -- INDEX

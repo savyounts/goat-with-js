@@ -25,7 +25,7 @@ class TripsController < ApplicationController
       redirect_to user_path(current_user)
     else
       @trip = current_user.trips.find_by(id: params[:id])
-      redirect_to trip_path(@trip) if @trip.nil? || !verify(@trip)
+      redirect_to user_path(current_user) if @trip.nil? || !verify(@trip)
     end
   end
 
@@ -33,7 +33,7 @@ class TripsController < ApplicationController
   def update
     trip = Trip.find_by(id: params[:id])
     trip.update(trip_params)
-    redirect_to user_trip_path(current_user, trip)
+    redirect_to user_path(current_user)
   end
 
   # def show

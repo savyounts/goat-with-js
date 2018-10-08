@@ -1,11 +1,18 @@
+<style type="text/css">
+  .destination_card {
+    background-image: url(<%= random_image %>) no-repeat center center fixed;
+    background-size: cover;
+  }
+</style>
+
 <h1>Destinations.</h1> <br>
 
 <%= link_to "New Destination", new_destination_path %>
 
-<p>
+<div class="wrapper">
   <% @destinations.each do |d| %>
-    <div><%= link_to d.name, destination_path(d) %><br>
+    <div class="destination_card homepage-banner-<%= rand(1..7) %>"> <%= link_to d.name, destination_path(d) %><br>
       <%= d.image_url %><br>
     </div>
   <% end %>
-</p>
+</div>

@@ -1,6 +1,6 @@
 <%= form_for @destination do |f| %>
   <%= f.hidden_field :creator_id, value: @destination.creator.id  %>
-  <%= f.label :name  %><br>
+  <%= f.label :name, value: "Occasion"  %><br>
   <%= f.text_field :name  %><br>
 
   <%= f.label :city  %><br>
@@ -22,6 +22,6 @@
   <%= f.text_area :day_trips  %><br>
 
   <%= f.label :image_url%><br>
-  <%= f.text_field :image_url  %><br>
+  <%= f.text_field :image_url  %><br><br>
   <%= f.submit %>
 <% end %>

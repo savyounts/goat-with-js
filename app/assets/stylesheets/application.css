@@ -45,7 +45,8 @@ nav {
   padding: 2px 12px;
 }
 
-.button {
+
+.button, input[type="submit" i]{
   color: #fff;
   text-decoration: none;
   background-color: #000;
@@ -56,6 +57,24 @@ nav {
 .create_button{
   right: 7.15%;
   margin-bottom: 20px;
+}
+
+/* FORM STYLES */
+form{
+  margin:auto;
+  width: 500px;
+}
+
+input, textarea {
+  width: 500px;
+  background-color: #E6E7E8;
+  border: none;
+  height: 30px;
+  font-size: 1em;
+}
+
+textarea {
+  height: 100px;
 }
 
 /* MULTI-DIV COLLECTIONS */

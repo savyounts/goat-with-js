@@ -33,7 +33,7 @@
     <br><br>
     <p>Comments:</p>
     <div class="comment-div">
-      <% @destination.comments.each do |c| %>
+      <% @destination.comments.top_comment.each do |c| %>
         <div class="comment">
           <p>
             <%= c.user.username.capitalize %> says:<br><br>

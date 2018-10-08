@@ -1,0 +1,12 @@
+<% @destination.comments.top_comment.each do |c| %>
+  <div class="comment">
+    <p>
+      <%= c.user.username.capitalize %> says:<br><br>
+      <%= c.content %><br><br>
+      <%= c.likes %>
+      <%= link_to "edit.", edit_destination_comment_path(@destination, c), class: "comment-links" if c.user == @current_user %>
+      <%= link_to "like.", like_comment_path(c), class: "comment-links", method: :post %>
+      <%= link_to "dislike.", dislike_comment_path(c), class: "comment-links", method: :post %>
+    </p>
+  </div><br>
+<% end %>

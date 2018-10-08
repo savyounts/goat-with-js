@@ -73,6 +73,13 @@ input, textarea {
   font-size: 1em;
 }
 
+input[type="checkbox" i] {
+  display: inline-block;
+  width: 20px;
+  height: 15px;
+  margin: 10px;
+}
+
 textarea {
   height: 100px;
 }

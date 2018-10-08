@@ -2,15 +2,11 @@
 <div class="wrapper">
   <%= form_for @plan do |f| %>
     <%= f.hidden_field :destination_id %>
+    <%= f.collection_select :trip_id, @current_user.trips, :id, :occasion, {:prompt => 'Select current trip'} %>
 
     <%=f.fields_for :trip, @plan.build_trip do |t| %>
       <%= t.hidden_field :user_id, value: @current_user.id %>
-      <%= t.text_field :name, list:"trip-name", placeholder: "Trip name." %>
-        <datalist id="trip-name">
-          <% @current_user.trips.each do |trip| %>
-            <option value="<%= trip.name %>">
-          <% end %>
-        </datalist><br>
+      <%= t.text_field :occasion, placeholder: "Or create a new one." %><br>
     <% end %>
 
     <%= f.submit "add #{@plan.destination.name}"%>

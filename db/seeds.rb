@@ -10,14 +10,14 @@ tom = User.create!(username: "tom", password: "tom", password_confirmation: "tom
 sam = User.create!(username: "sam", password: "sam", password_confirmation: "sam", email: "sam@sam.com")
 
 
-Trip.create(name: "Honeymoon", start_date: Faker::Date.forward, user_id: 1, completed: true)
-Trip.create(name: "Girls Weekend", start_date: Faker::Date.forward, user_id: 2, completed: false)
-Trip.create(name: "Aniversary", start_date: Faker::Date.forward, user_id: 3, completed: true)
-Trip.create(name: "Backpacking", start_date: Faker::Date.forward, user_id: 1, completed: false)
-Trip.create(name: "Vietnam", start_date: Faker::Date.forward, user_id: 3, completed: false)
-Trip.create(name: "Grad Trip", start_date: Faker::Date.forward, user_id: 2, completed: false)
-Trip.create(name: "Christmas", start_date: Faker::Date.forward, user_id: 2, completed: false)
-Trip.create(name: "Summer Vacay", start_date: Faker::Date.forward, user_id: 1, completed: true)
+Trip.create(occasion: "Honeymoon", start_date: Faker::Date.forward, user_id: 1, completed: true)
+Trip.create(occasion: "Girls Weekend", start_date: Faker::Date.forward, user_id: 2, completed: false)
+Trip.create(occasion: "Aniversary", start_date: Faker::Date.forward, user_id: 3, completed: true)
+Trip.create(occasion: "Backpacking", start_date: Faker::Date.forward, user_id: 1, completed: false)
+Trip.create(occasion: "Vietnam", start_date: Faker::Date.forward, user_id: 3, completed: false)
+Trip.create(occasion: "Grad Trip", start_date: Faker::Date.forward, user_id: 2, completed: false)
+Trip.create(occasion: "Christmas", start_date: Faker::Date.forward, user_id: 2, completed: false)
+Trip.create(occasion: "Summer Vacay", start_date: Faker::Date.forward, user_id: 1, completed: true)
 
 Destination.create(name: "Piton Mountains", city: "St. Lucia", country: "Virgin Islands", description: "Lush rainforests, majestic mountains and romantic resorts are all reasons to visit this Caribbean island. A haven for honeymooners, St. Lucia offers the perfect mix of seclusion, relaxation and adventure. To take in the spectacular landscape, plan to hike the Piton Mountains or snorkel and scuba dive in the waters of Anse Chastanet." , must_dos: "Go to beach, hike the mountains", creator_id:1)
 Destination.create(name: "Grand Tetons", city: "Jackson Hole", country: 'USA', description:"Tucked away less than 60 miles south of Yellowstone National Park, Jackson Hole sees an influx of winter travelers looking to hit the slopes at upscale ski resorts. But you'd be remiss to think that's all there is to do in this small Wyoming town. Visit the neighboring Grand Teton National Park for awe-inspiring vistas, catch a glimpse of majestic animals at the National Elk Refuge or relax sore muscles in the Granite Hot Springs" , must_dos: "Tater Lake" , dont_dos: "don't forget bear spray" , creator_id:2)

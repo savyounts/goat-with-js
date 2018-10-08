@@ -4,8 +4,9 @@ class Plan < ApplicationRecord
 
   accepts_nested_attributes_for :trip, reject_if: :reject_trip
 
+
   def reject_trip(attributes)
-    attributes['name'].blank?
+    attributes['occasion'].blank?
   end
-  
+
 end

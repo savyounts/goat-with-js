@@ -4,7 +4,7 @@ class Trip < ApplicationRecord
   has_many :plans
   has_many :destinations, through: :plans
 
-  validates :name, presence: {message: "Occasion can't be blank"}
+  validates :occasion, presence: true
   validates :user_id, presence: true
 
   def plan(destination_id)

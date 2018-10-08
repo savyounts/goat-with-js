@@ -24,7 +24,7 @@ class PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:destination_id, :trip_id, trip_attributes: [:name, :user_id])
+    params.require(:plan).permit(:destination_id, :trip_id, trip_attributes: [:occasion, :user_id])
   end
 
 end

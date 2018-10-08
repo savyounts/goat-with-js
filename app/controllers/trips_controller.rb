@@ -9,7 +9,7 @@ class TripsController < ApplicationController
       @trip = current_user.trips.new
     end
   end
- 
+
   def create
     @trip = Trip.new(trip_params)
     if @trip.save
@@ -48,6 +48,6 @@ class TripsController < ApplicationController
 
   private
     def trip_params
-      params.require(:trip).permit(:name, :user_id, :start_date, :completed, destination_ids:[])
+      params.require(:trip).permit(:occasion, :user_id, :start_date, :completed, destination_ids:[])
     end
 end

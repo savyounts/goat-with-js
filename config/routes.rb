@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :sessions, only: [:create]
   resources :plans, only: [:create, :destroy]
-  resources :trips, only: [:index, :create, :update, :destroy]
+  resources :trips, only: [:create, :update, :destroy]
 
 
   resources :comments, only: [:create, :update] do

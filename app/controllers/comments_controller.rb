@@ -38,6 +38,18 @@ class CommentsController < ApplicationController
   def destroy
   end
 
+  def like
+    comment = Comment.find_by(id: params[:id])
+    comment.like
+    redirect_to destination_path(comment.destination)
+  end
+
+  def dislike
+    comment = Comment.find_by(id: params[:id])
+    comment.dislike
+    redirect_to destination_path(comment.destination)
+  end
+
   private
     def comment_params
       params.require(:comment).permit(:user_id, :destination_id, :content)

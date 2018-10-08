@@ -71,6 +71,8 @@ input, textarea {
   border: none;
   height: 30px;
   font-size: 1em;
+  padding: 5px;
+  margin: 5px;
 }
 
 input[type="checkbox" i] {
@@ -82,6 +84,10 @@ input[type="checkbox" i] {
 
 textarea {
   height: 100px;
+}
+
+input[type="submit" i] {
+  width: 200px;
 }
 
 /* MULTI-DIV COLLECTIONS */

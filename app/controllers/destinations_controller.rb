@@ -8,6 +8,7 @@ class DestinationsController < ApplicationController
     else
       @destinations = Destination.all
     end
+    render :layout => "application"
   end
 
   def new

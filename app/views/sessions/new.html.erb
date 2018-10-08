@@ -1,4 +1,6 @@
 <h1>login.</h1>
+<br>
+<div class="wrapper"
   <%= form_tag sessions_path do %>
     <%= text_field_tag :username, nil, placeholder: "Username" %><br>
     <%= password_field_tag :password, nil,  placeholder: "Password" %><br>
@@ -8,3 +10,4 @@
   <br><br>
 
   <p> Don't have an account? <%= link_to "Sign Up", new_user_path%> here or Sign up with <%= link_to('Facebook', '/auth/facebook') %>.
+</div>

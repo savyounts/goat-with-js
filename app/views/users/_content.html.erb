@@ -1,0 +1,20 @@
+<% @user.trips.each do |t| %>
+  <div class=" div_card <%= t.completed ? "completed-trip " : "trip_size"%> ">
+
+    <div class="inner-pic">  <%= image_tag("#{rand(1..7)}.jpg") %> </div>
+
+    <p class="trip-name"><%= t.occasion %></p><br>
+    <p> <%= t.start_date.strftime("%b %d, %Y") unless t.start_date.nil?%> </p><br>
+    <ul class="trip-destinations">
+      <% t.destinations.each do |d| %>
+        <p> <%= d.name %></p>
+      <% end %>
+    </ul>
+
+    <div class="edit-links">
+      <%= link_to "edit", edit_user_trip_path(@current_user, t) %>
+      <%= link_to "delete", t, method: :delete %>
+    </div>
+
+  </div>
+<% end %>

@@ -8,6 +8,12 @@
   text-align: center;
 }
 
+.completed-trip {
+  width: 20%;
+  background-color: #D1D3D4;
+  text-align: center;
+}
+
 .trip_link {
   text-decoration: none;
   color: black;
@@ -16,12 +22,28 @@
   margin-top: 10px;
 }
 
-.trip_size p {
+.completed-trip .trip_link {
+  color: #B1B3B6;
+  text-decoration: line-through;
+}
+
+.div_card p {
   margin: 10px 0 0 0;
+}
+
+.completed-trip p {
+  color: #B1B3B6
 }
 
 .edit-links a{
   color: #000;
+  text-decoration: none;
+  text-align: right;
+  margin: 0 5px 5px 0;
+}
+
+.completed-trip .edit-links a{
+  color: #B1B3B6;
   text-decoration: none;
   text-align: right;
   margin: 0 5px 5px 0;

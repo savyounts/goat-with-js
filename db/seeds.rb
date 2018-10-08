@@ -11,12 +11,12 @@ sam = User.create!(username: "sam", password: "sam", password_confirmation: "sam
 
 
 Trip.create(name: "Honeymoon", start_date: Faker::Date.forward, user_id: 1, completed: true)
-Trip.create(name: "Girls Weekend", start_date: Faker::Date.forward, user_id: 2, completed: true)
+Trip.create(name: "Girls Weekend", start_date: Faker::Date.forward, user_id: 2, completed: false)
 Trip.create(name: "Aniversary", start_date: Faker::Date.forward, user_id: 3, completed: true)
-Trip.create(name: "Backpacking", start_date: Faker::Date.forward, user_id: 1, completed: true)
-Trip.create(name: "Vietnam", start_date: Faker::Date.forward, user_id: 3, completed: true)
-Trip.create(name: "Grad Trip", start_date: Faker::Date.forward, user_id: 2, completed: true)
-Trip.create(name: "Christmas", start_date: Faker::Date.forward, user_id: 2, completed: true)
+Trip.create(name: "Backpacking", start_date: Faker::Date.forward, user_id: 1, completed: false)
+Trip.create(name: "Vietnam", start_date: Faker::Date.forward, user_id: 3, completed: false)
+Trip.create(name: "Grad Trip", start_date: Faker::Date.forward, user_id: 2, completed: false)
+Trip.create(name: "Christmas", start_date: Faker::Date.forward, user_id: 2, completed: false)
 Trip.create(name: "Summer Vacay", start_date: Faker::Date.forward, user_id: 1, completed: true)
 
 Destination.create(name: "Piton Mountains", city: "St. Lucia", country: "Virgin Islands", description: "Lush rainforests, majestic mountains and romantic resorts are all reasons to visit this Caribbean island. A haven for honeymooners, St. Lucia offers the perfect mix of seclusion, relaxation and adventure. To take in the spectacular landscape, plan to hike the Piton Mountains or snorkel and scuba dive in the waters of Anse Chastanet." , must_dos: "Go to beach, hike the mountains", creator_id:1)

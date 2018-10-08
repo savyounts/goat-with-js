@@ -4,12 +4,36 @@
 
 .trip_size{
   width: 20%;
-  height: 400px;
   background-color: #E6E7E8;
+  text-align: center;
+}
+
+.trip_link {
+  text-decoration: none;
+  color: black;
+  font-size: 1.25em;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.trip_size p {
+  margin: 10px 0 0 0;
+}
+
+.edit-links a{
+  color: #000;
+  text-decoration: none;
+  text-align: right;
+  margin: 0 5px 5px 0;
+}
+
+.edit-links {
+  position: absolute;
+  right: 0;
 }
 
 .inner-pic {
-  height: 20%;
+  height: 50%;
   overflow: hidden;
 }
 

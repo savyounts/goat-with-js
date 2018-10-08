@@ -57,3 +57,12 @@ nav {
   width: 95%;
   margin: auto;
 }
+
+.destination_card {
+  width: 30%;
+  display: inline-block;
+  margin: 1%;
+  vertical-align: top;
+  height: 200px;
+  position: relative;
+}

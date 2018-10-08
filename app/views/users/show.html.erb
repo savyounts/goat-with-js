@@ -1,6 +1,11 @@
 <h1>My trips.</h1>
 <%= @user.username %><br>
-<%= link_to "Create a new trip.", new_user_trip_path(@user) %>
-<% @user.trips.each do |t| %>
-  <div><%= link_to t.name, user_trip_path(@user, t) %></div>
-<% end %>
+
+<div class="wrapper">
+  <%= link_to "Create a new trip.", new_user_trip_path(@user), class:"button" %>
+  <div class="destination_card random_background-<%= rand(1..7) %>">
+  <% @user.trips.each do |t| %>
+    <div><%= link_to t.name, user_trip_path(@user, t) %></div>
+  <% end %>
+  </div>
+</div>

@@ -16,11 +16,4 @@ class User < ApplicationRecord
     end
   end
 
-  # scope :destinations,
-
-  # def destinations
-  #   # binding.pry
-  #   destinations = []
-  #   self.trips.each {|trip| destinations << trip.destinations}.flatten
-  # end
 end

@@ -11,9 +11,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
-    if @comment.save
-      redirect_to destination_path(@comment.destination)
+    comment = Comment.new(comment_params)
+    if comment.save
+      redirect_to destination_path(comment.destination)
     else
       render 'new'
     end
@@ -33,9 +33,6 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])
     @comment.update(comment_params)
     redirect_to destination_path(@comment.destination)
-  end
-
-  def destroy
   end
 
   def like

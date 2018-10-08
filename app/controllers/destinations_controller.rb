@@ -1,6 +1,8 @@
 class DestinationsController < ApplicationController
-  before_action :require_login, :current_user
+  before_action :require_login, :current_user, :set_destination
   skip_before_action :require_login, :only => [:index, :show]
+  skip_before_action :set_destination, :only => [:index, :new, :create]
+
 
   def index
     if params[:user_id] && current_user == User.find_by(id: params[:user_id])
@@ -11,10 +13,12 @@ class DestinationsController < ApplicationController
     render :layout => "application"
   end
 
+
   def new
     @destination = current_user.custom_destinations.build
     render :layout => "application"
   end
+
 
   def create
     @destination = Destination.new(destination_params)
@@ -27,23 +31,18 @@ class DestinationsController < ApplicationController
   end
 
   def edit
-    @destination = Destination.find_by(id: params[:id])
     render :layout => "application"
   end
 
   def update
-    @destination = Destination.find_by(id: params[:id])
     @destination.update(destination_params)
     redirect_to destination_path(@destination)
   end
 
   def show
-    current_user
-    @destination = Destination.find_by(id: params[:id])
   end
 
   def destroy
-    @destination = Destination.find_by(id: params[:id])
     @destination.destroy
     redirect_to destinations_path
   end
@@ -52,4 +51,5 @@ private
   def destination_params
     params.require(:destination).permit(:name, :city, :country, :description, :creator_id, :must_dos, :dont_dos, :day_trips, :image_url)
   end
+
 end

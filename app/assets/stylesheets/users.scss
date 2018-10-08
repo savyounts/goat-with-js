@@ -2,16 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.trip_size{
+div.trip_size, .completed-trip{
   width: 20%;
   background-color: #E6E7E8;
   text-align: center;
-}
-
-.completed-trip {
-  width: 20%;
-  background-color: #D1D3D4;
-  text-align: center;
+  height: 400px;
 }
 
 .trip_link {
@@ -22,17 +17,13 @@
   margin-top: 10px;
 }
 
-.completed-trip .trip_link {
-  color: #B1B3B6;
-  text-decoration: line-through;
-}
 
 .div_card p {
   margin: 10px 0 0 0;
 }
 
-.completed-trip p {
-  color: #B1B3B6
+ul.trip-destinations {
+  text-align: left;
 }
 
 .edit-links a{
@@ -42,6 +33,27 @@
   margin: 0 5px 5px 0;
 }
 
+.edit-links {
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+}
+
+.inner-pic {
+  height: 20%;
+  overflow: hidden;
+}
+
+.inner-pic img{
+  width: 100%;
+  height: auto;
+}
+
+// COMPLETED TRIP
+.completed-trip p {
+  color: #B1B3B6
+}
+
 .completed-trip .edit-links a{
   color: #B1B3B6;
   text-decoration: none;
@@ -49,17 +61,13 @@
   margin: 0 5px 5px 0;
 }
 
-.edit-links {
-  position: absolute;
-  right: 0;
+
+.completed-trip .trip_link {
+  color: #B1B3B6;
+  text-decoration: line-through;
 }
 
-.inner-pic {
-  height: 50%;
-  overflow: hidden;
-}
-
-.inner-pic img{
-  width: 100%;
-  height: auto;
+div.completed-trip {
+  background-color: #D1D3D4;
+  height: 400px;
 }

@@ -8,9 +8,14 @@
       <div class="inner-pic">  <%= image_tag("#{rand(1..7)}.jpg") %> </div>
         <%= link_to t.name, user_trip_path(@user, t), class:'trip_link' %><br>
         <p> <%= t.start_date %> </p><br>
+        <ul class="trip-destinations"> <% t.destinations.each do |d| %>
+                <p> <%= d.name %></p>
+            <% end %>
+        </ul>
+
         <div class="edit-links">
-          <%= link_to "edit", edit_user_trip_path(t) %>
-          <%= link_to "delete", user_trip_path(t), method: :delete %>
+          <%= link_to "edit", edit_user_trip_path(@current_user, t) %>
+          <%= link_to "delete", user_trip_path(@current_user, t), method: :delete %>
         </div>
     </div>
   <% end %>

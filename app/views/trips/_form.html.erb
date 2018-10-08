@@ -3,11 +3,12 @@
     <%= f.hidden_field :user_id, value: @trip.user.id %>
     <%= f.text_field :occasion, placeholder: "Occasion" %><br><br>
     <%= f.text_field :start_date, placeholder: "Start Date" %><br>
+
     <% if !@trip.destinations.empty? %>
       Destinations: <br>
-      <%= f.collection_check_boxes :destination_ids, @trip.destinations, :id, :name %><br>
-      <br>
+      <%= f.collection_check_boxes :destination_ids, @trip.destinations, :id, :name %><br><br>
     <% end %>
+
     <%= f.check_box :completed, {}, 1, 0 %>Trip Completed?<br>
     <%= f.submit %>
   <% end %>

@@ -1,4 +1,5 @@
 <h1><%= @trip.name %></h1>
+
 <p><% @trip.destinations.each do |d| %>
       <%= link_to d.name, destination_path(d) %> -
       <%= link_to "remove from trip", @trip.plan(d.id), method: :delete %>

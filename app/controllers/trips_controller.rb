@@ -3,11 +3,8 @@ class TripsController < ApplicationController
 
 
   def new
-    if !User.exists?(params[:user_id]) || current_user != User.find(params[:user_id])
-      redirect_to user_path(current_user)
-    else
-      @trip = current_user.trips.new
-    end
+    verify_user
+    @trip = current_user.trips.new
   end
 
   def create
@@ -21,27 +18,20 @@ class TripsController < ApplicationController
   end
 
   def edit
-    if !User.exists?(params[:user_id]) || current_user != User.find(params[:user_id])
-      redirect_to user_path(current_user)
-    else
-      @trip = current_user.trips.find_by(id: params[:id])
-      redirect_to user_path(current_user) if @trip.nil? || !verify(@trip)
-    end
+    verify_user
+    @trip = current_user.trips.find_by(id: params[:id])
+    redirect_to user_path(current_user) if @trip.nil? || !verify(@trip)
   end
 
 
   def update
-    trip = Trip.find_by(id: params[:id])
-    trip.update(trip_params)
+    set_trip
+    @trip.update(trip_params)
     redirect_to user_path(current_user)
   end
 
-  # def show
-  #   @trip =  Trip.find_by(id: params[:id])
-  # end
-
   def destroy
-    @trip =  Trip.find_by(id: params[:id])
+    set_trip
     @trip.plans.destroy_all
     @trip.destroy
     redirect_to user_path(current_user)
@@ -50,5 +40,9 @@ class TripsController < ApplicationController
   private
     def trip_params
       params.require(:trip).permit(:occasion, :user_id, :start_date, :completed, destination_ids:[])
+    end
+
+    def verify_user
+      redirect_to user_path(current_user) if !User.exists?(params[:user_id]) || current_user != User.find(params[:user_id])
     end
 end

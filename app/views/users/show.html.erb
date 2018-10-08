@@ -2,10 +2,12 @@
 <%= @user.username %><br>
 
 <div class="wrapper">
-  <%= link_to "Create a new trip.", new_user_trip_path(@user), class:"button" %>
-  <div class="destination_card random_background-<%= rand(1..7) %>">
+  <%= link_to "Create a new trip.", new_user_trip_path(@user), class:"button create_button" %><br>
   <% @user.trips.each do |t| %>
-    <div><%= link_to t.name, user_trip_path(@user, t) %></div>
+    <div class="trip_size div_card">
+      <div class="inner-pic">  <%= image_tag("#{rand(1..7)}.jpg") %> </div>
+        <%= link_to t.name, user_trip_path(@user, t) %><br>
+    </div>
   <% end %>
-  </div>
+
 </div>

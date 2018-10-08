@@ -12,22 +12,13 @@ h1 {
   left: 2.75%;
 }
 
-.button{
-  right: 7.15%;
-  margin-bottom: 20px;
-}
+
 
 // INDIVIDUAL DIV STYLES -- INDEX
-
-.destination_card {
+.destination_size {
   width: 30%;
-  display: inline-block;
-  margin: 1%;
-  vertical-align: top;
   height: 200px;
-  position: relative;
 }
-
 .destination_name {
   width: 100%;
   height: 20%;
@@ -41,45 +32,4 @@ h1 {
   color: #000;
   font-size: 1.5em;
   text-align: center;
-}
-
-// RANDOMIZE DIV BACKGROUND IMAGES -- INDEX
-
-.random-background-0 {
-  background-image: url('0.jpg');
-  background-size: cover;
-}
-.random-background-1 {
-  background-image: url('1.jpg');
-  background-size: cover;
-}
-
-.random-background-2 {
-  background-image: url('2.jpg');
-  background-size: cover;
-}
-
-.random-background-3 {
-  background-image: url('3.jpg');
-  background-size: cover;
-}
-
-.random-background-4 {
-  background-image: url('4.jpg');
-  background-size: cover;
-}
-
-.random-background-5 {
-  background-image: url('5.jpg');
-  background-size: cover;
-}
-
-.random-background-6 {
-  background-image: url('6.jpg');
-  background-size: cover;
-}
-
-.random-background-7 {
-  background-image: url('7.jpg');
-  background-size: cover;
 }

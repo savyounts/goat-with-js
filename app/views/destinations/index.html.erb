@@ -10,9 +10,9 @@
 
 
 <div class="wrapper">
-  <%= link_to "New Destination", new_destination_path, class:"button" %><br>
+  <%= link_to "New Destination", new_destination_path, class:"button create_button" %><br>
   <% @destinations.each do |d| %>
-    <div class="destination_card random-background-<%= rand(1..7) %>">
+    <div class="destination_size div_card random-background-<%= rand(1..7) %>">
       <div class="destination_name"><%= link_to d.name, destination_path(d) %></div><br>
     </div>
   <% end %>

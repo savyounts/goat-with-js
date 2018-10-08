@@ -89,6 +89,7 @@ h1 {
 // INDIVIDUAL DIV STYLES -- INDEX
 .destination_size {
   width: 30%;
+  text-align: center;
 }
 .destination_name {
   width: 100%;
@@ -96,11 +97,12 @@ h1 {
   background-color: #E6E7E8;
   position: absolute;
   bottom: 0;
+  padding-top: 10px;
 }
 
 .destination_name a {
   text-decoration: none;
   color: #000;
   font-size: 1.5em;
-  text-align: center;
+
 }

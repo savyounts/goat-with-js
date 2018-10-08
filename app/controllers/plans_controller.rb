@@ -11,8 +11,8 @@ class PlansController < ApplicationController
   end
 
   def create
-      @plan = Plan.create(plan_params)
-      redirect_to user_path(current_user)
+    @plan = Plan.create(plan_params)
+    redirect_to user_path(current_user)
   end
 
   def destroy

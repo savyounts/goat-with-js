@@ -3,36 +3,36 @@
 </div>
 <br>
 
-<div class="dest-info">
-  <h3>Location: <%= @destination.city%>, <%= @destination.country %></h3><br>
-  <p>Description: <%= @destination.description %></p> <br>
-  <p>Must-Do's: <%= @destination.must_dos %></p> <br>
-  <p>Don't-Do's: <%= @destination.dont_dos %></p> <br>
-  <p>Day-trips: <%= @destination.day_trips %></p> <br>
-  <p>trips: <% @destination.trips.each do |t|  %>
-                <%= t.name %>
-            <% end %></p> <br>
+<div class="wrapper">
+  <div class="dest-info">
+    <p class="location">Location: <%= @destination.city%>, <%= @destination.country %></h3><br>
+    <p>Description: <br><br><%= @destination.description %></p> <br>
+    <p>Must-Do's: <br><br><%= @destination.must_dos %></p> <br>
+    <p>Don't-Do's: <br><br><%= @destination.dont_dos %></p> <br>
+    <p>Day-trips: <br><br><%= @destination.day_trips %></p> <br>
 
-  <br><br>
-  <%= link_to "Add to my trip", new_destination_plan_path(@destination) %>
-  <% if @destination.creator == @current_user %>
-    <%= link_to "Update this destination", edit_destination_path(@destination) %>
-    <%= link_to "Delete this destination", @destination, method: :delete %>
-  <% end %>
-</div>
-
-<div class="comments">
-  <br><br>
-  <p>Comments:</p>
-  <div class="comment-div">
-    <% @destination.comments.each do |c| %>
-      <div class="comment">
-        <%= c.content %><br>
-        <%= c.user.username %><br>
-        <%= link_to "edit", edit_destination_comment_path(@destination, c) if c.user == @current_user %>
-      </div><br>
-    <% end %>
+    <div class="action-buttons">
+      <%= link_to "Add to my trip", new_destination_plan_path(@destination) %><br>
+      <% if @destination.creator == @current_user %>
+        <%= link_to "Update this destination", edit_destination_path(@destination)%><br>
+        <%= link_to "Delete this destination", @destination, method: :delete %>
+      <% end %>
+    </div>
   </div>
-  <br><br>
-  <%= link_to "Leave a suggestion", new_destination_comment_path(@destination) %>
+
+  <div class="comments">
+    <br><br>
+    <p>Comments:</p>
+    <div class="comment-div">
+      <% @destination.comments.each do |c| %>
+        <div class="comment">
+          <%= c.content %><br>
+          <%= c.user.username %><br>
+          <%= link_to "edit", edit_destination_comment_path(@destination, c) if c.user == @current_user %>
+        </div><br>
+      <% end %>
+    </div>
+    <br><br>
+    <%= link_to "Leave a suggestion", new_destination_comment_path(@destination) %>
+  </div>
 </div>

@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
   def set_destination
     @destination = Destination.find_by(id: params[:id])
   end
+
+  def set_comment
+    @comment = Comment.find_by(id: params[:id])
+  end
 end

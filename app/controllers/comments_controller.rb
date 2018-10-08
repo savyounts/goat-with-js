@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :require_login
+  before_action :require_login, :set_comment
+  skip_before_action :set_comment, :only => [:index, :new, :create, :edit]
 
   def new
     if Destination.exists?(params[:destination_id])
@@ -30,25 +31,27 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment = Comment.find_by(id: params[:id])
     @comment.update(comment_params)
-    redirect_to destination_path(@comment.destination)
+    my_path
   end
 
   def like
-    comment = Comment.find_by(id: params[:id])
-    comment.like
-    redirect_to destination_path(comment.destination)
+    @comment.like
+    my_path
   end
 
   def dislike
-    comment = Comment.find_by(id: params[:id])
-    comment.dislike
-    redirect_to destination_path(comment.destination)
+    @comment.dislike
+    my_path
   end
 
   private
     def comment_params
       params.require(:comment).permit(:user_id, :destination_id, :content)
+    end
+
+    def my_path
+      set_comment
+      redirect_to destination_path(@comment.destination)
     end
 end

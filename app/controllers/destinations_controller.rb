@@ -13,6 +13,7 @@ class DestinationsController < ApplicationController
 
   def new
     @destination = current_user.custom_destinations.build
+    render :layout => "application"
   end
 
   def create
@@ -27,6 +28,7 @@ class DestinationsController < ApplicationController
 
   def edit
     @destination = Destination.find_by(id: params[:id])
+    render :layout => "application"
   end
 
   def update

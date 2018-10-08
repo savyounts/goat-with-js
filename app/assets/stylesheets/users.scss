@@ -3,13 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 div.trip_size, .completed-trip{
-  width: 20%;
+  width: 21.9%;
   background-color: #E6E7E8;
   text-align: center;
   height: 400px;
 }
 
-.trip_link {
+.trip-name {
   text-decoration: none;
   color: black;
   font-size: 1.25em;
@@ -62,7 +62,7 @@ ul.trip-destinations {
 }
 
 
-.completed-trip .trip_link {
+.completed-trip .trip-name {
   color: #B1B3B6;
   text-decoration: line-through;
 }

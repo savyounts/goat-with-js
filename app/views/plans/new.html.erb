@@ -1,13 +1,18 @@
-<h1>What trip do you want to add this destination to?</h1>
+<h1>What trip do you want to add this destination to?</h1><br>
+<div class="wrapper">
   <%= form_for @plan do |f| %>
     <%= f.hidden_field :destination_id %>
-    <%= f.label :trip_id, value: "select a trip" %><br>
-    <%= f.collection_select :trip_id, @current_user.trips, :id, :name, include_blank: "Create new trip." %><br>
 
-    <%=f.label :trip_id, value: "or create a new trip" %><br>
     <%=f.fields_for :trip, @plan.build_trip do |t| %>
       <%= t.hidden_field :user_id, value: @current_user.id %>
-      <%= t.text_field :name, placeholder: "new trip name." %><br>
+      <%= t.text_field :name, list:"trip-name", placeholder: "Trip name." %>
+        <datalist id="trip-name">
+          <% @current_user.trips.each do |trip| %>
+            <option value="<%= trip.name %>">
+          <% end %>
+        </datalist><br>
     <% end %>
+
     <%= f.submit "add #{@plan.destination.name}"%>
   <% end %>
+</div>

@@ -5,6 +5,8 @@ class Destination < ApplicationRecord
     has_many :plans
     has_many :trips, through: :plans
 
+    validates :name, uniqueness:{case_sensitive: false}
     validates :name, :city, :country, :description, presence: true
+
 
 end

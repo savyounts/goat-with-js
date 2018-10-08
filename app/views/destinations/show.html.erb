@@ -4,7 +4,7 @@
 <br>
 
 <div class="wrapper">
-  <div class="dest-info">
+  <section class="dest-info">
     <p class="location">Location: <%= @destination.city%>, <%= @destination.country %></h3><br>
     <p>Description: <br><br><%= @destination.description %></p> <br>
     <p>Must-Do's: <br><br><%= @destination.must_dos %></p> <br>
@@ -18,21 +18,25 @@
         <%= link_to "Delete this destination", @destination, method: :delete %>
       <% end %>
     </div>
-  </div>
+  </section>
 
-  <div class="comments">
+  <section class="comments">
     <br><br>
     <p>Comments:</p>
     <div class="comment-div">
       <% @destination.comments.each do |c| %>
         <div class="comment">
-          <%= c.content %><br>
-          <%= c.user.username %><br>
-          <%= link_to "edit", edit_destination_comment_path(@destination, c) if c.user == @current_user %>
+          <p>
+            <%= c.user.username.capitalize %> says:<br><br>
+            <%= c.content %><br><br>
+            <%= link_to "edit.", edit_destination_comment_path(@destination, c), class: "comment-links" if c.user == @current_user %>
+            <%= link_to "like.", edit_destination_comment_path(@destination, c), class: "comment-links" %>
+            <%= link_to "dislike.", edit_destination_comment_path(@destination, c), class: "comment-links"%>
+          </p>
         </div><br>
       <% end %>
     </div>
     <br><br>
-    <%= link_to "Leave a suggestion", new_destination_comment_path(@destination) %>
-  </div>
+    <%= link_to "Leave a suggestion", new_destination_comment_path(@destination), class:"action-buttons" %>
+  </section>
 </div>

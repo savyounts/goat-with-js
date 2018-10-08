@@ -40,6 +40,8 @@ h1.header-box {
   margin: auto;
 }
 
+// DESTINATION INFO
+
 .dest-info {
   display: inline-block;
   float:left;
@@ -50,7 +52,7 @@ h1.header-box {
   font-size: 2em;
 }
 
-.action-buttons a {
+.action-buttons a, .comment .action-buttons {
   color: #fff;
   text-decoration: none;
   background-color: #000;
@@ -59,10 +61,26 @@ h1.header-box {
   display: inline-block;
 }
 
+// COMMENTS
+
 .comments {
   display: inline-block;
   float:right;
   width: 40%;
+}
+
+.comment p{
+  background-color:#E6E7E8;
+  border: 20px solid #E6E7E8;
+  margin: 0;
+}
+
+.comment-links {
+  text-decoration: none;
+  color: #B1B3B6;
+  text-align: right;
+  padding: 5px;
+  font-size: .75em;
 }
 
 

@@ -5,6 +5,7 @@ RSpec.describe User, :type => :model do
     User.create(
       :username => "Mindy",
       :password => "password",
+      :email => "mindy@mindy.com"
     )
   }
 
@@ -12,6 +13,7 @@ RSpec.describe User, :type => :model do
     User.create(
       :username => "sav",
       :password => "password",
+      :email => "sav@sav.com"
     )
   }
 
@@ -56,9 +58,9 @@ RSpec.describe User, :type => :model do
   end
 
   it "has many trips" do
-    first_trip = Trip.create(:user_id => user.id, :name => "honeymoon")
+    first_trip = Trip.create(:user_id => user.id, :occasion => "honeymoon")
     plan = Plan.create(:trip_id => first_trip.id, destination_id: spain.id)
-    second_trip = Trip.create(:user_id => user.id, :name => "girls week")
+    second_trip = Trip.create(:user_id => user.id, :occasion => "girls week")
     plan = Plan.create(:trip_id => second_trip.id, destination_id: trolltunga.id)
     expect(user.trips.first).to eq(first_trip)
     expect(user.trips.last).to eq(second_trip)

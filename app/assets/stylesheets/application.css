@@ -65,7 +65,7 @@ form{
   width: 500px;
 }
 
-input, textarea {
+input, textarea, select {
   width: 500px;
   background-color: #E6E7E8;
   border: none;

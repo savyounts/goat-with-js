@@ -37,3 +37,7 @@ Confirm:
 - [x] Limited logic in controllers
 - [x] Views use helper methods if appropriate
 - [x] Views use partials if appropriate
+
+<!--
+https://medium.com/alturasoluciones/setting-up-rails-5-active-storage-with-amazon-s3-3d158cf021ff -->
+<!-- carrierwave -->

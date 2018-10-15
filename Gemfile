@@ -32,6 +32,7 @@ gem 'faker'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
+gem "mini_magick"
 
 
 # Use ActiveStorage variant

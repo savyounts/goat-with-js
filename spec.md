@@ -18,20 +18,19 @@
 
 #Project Repo Specs:
 Read Me file contains:
-[] Application Description
+[x] Application Description
 
-[] Installation guide (e.g. fork and clone repo, migrate db, bundle install, etc)
+[x] Installation guide (e.g. fork and clone repo, migrate db, bundle install, etc)
 
-[] Contributors guide (e.g. file an issue, file an issue with a pull request, etc)
+[x] Contributors guide (e.g. file an issue, file an issue with a pull request, etc)
 
-[] Licensing statement at the bottom (e.g. This project has been licensed under the MIT open source license.)
+[x] Licensing statement at the bottom (e.g. This project has been licensed under the MIT open source license.)
 
-[] Repo General
+Repo General
+[x] You have a large number of small Git commits
 
-[] You have a large number of small Git commits
+[x] Your commit messages are meaningful
 
-[] Your commit messages are meaningful
+[x] You made the changes in a commit that relate to the commit message
 
-[] You made the changes in a commit that relate to the commit message
-
-[] You don't include changes in a commit that aren't related to the commit message
+[x] You don't include changes in a commit that aren't related to the commit message

@@ -1,6 +1,6 @@
 # Get Out And Travel (GOAT)
 
-Goat is a rails app where users can log on and keep track of trips they are currently planning. Users can create trips that they can edit and update for themselves and they can also create destinations full of information about places around the world that all other users can see and add to their trips. Users can also comment on destinations they have not created to let the creator (or other users looking at it) other good or bad things about that destination.
+Goat is an app that uses a Rails backend with JavaScript. Users can log on and keep track of trips they are currently planning. Users can create trips that they can edit and update for themselves and they can also create destinations full of information about places around the world that all other users can see and add to their trips. Users can also comment on destinations they have not created to let the creator (or other users looking at it) other good or bad things about that destination.
 
 ## Getting Started
 
@@ -39,6 +39,7 @@ rspec spec/models/[filename]
 ## Built With
 
 * [Ruby on Rails](https://rubyonrails.org/) - The web framework used
+* [JavaScript](https://www.javascript.com/) 
 * [Sqlite](https://www.sqlite.org/) - Database management
 
 ## Contributing

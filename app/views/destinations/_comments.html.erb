@@ -4,9 +4,26 @@
       <%= c.user.username.capitalize %> says:<br><br>
       <%= c.content %><br><br>
       <%= c.likes %>
-      <%= link_to "edit.", edit_destination_comment_path(@destination, c), class: "comment-links" if c.user == @current_user %>
-      <%= link_to "like.", like_comment_path(c), class: "comment-links", method: :post %>
-      <%= link_to "dislike.", dislike_comment_path(c), class: "comment-links", method: :post %>
+      <%= link_to "edit.", edit_destination_comment_path(@destination, c), :"data-commentId" => c.id, class: "comment-links" if c.user == @current_user %>
+
+      <%= link_to "like.", "#", :"data-commentId" => c.id, id: "like-button", class: "comment-links" %>
+
+      <%= link_to "dislike.", "#", :"data-commentId" => c.id, id: "dislike-button", class: "comment-links" %>
     </p>
   </div><br>
 <% end %>
+
+<script type="text/javascript">
+  $(function(){
+    $('#like').on('click', (e) => {
+      e.preventDefault()
+      clickLike()
+    })
+
+    $('#dislike').on('click', (e) => {
+      e.preventDefault()
+      clickDislike
+    })
+  })
+
+</script>

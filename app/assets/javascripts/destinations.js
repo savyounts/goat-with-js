@@ -18,13 +18,18 @@ $( document ).ready(function() {
       $('#next-button').attr("data-destId", destination["id"])
 
       // Comments
-      let comments = destination['comments'].forEach(comment =>{
-        // $('.comment-username').text(findUser(comment['user_id']))
+      // let comments = () =>{
+        destination['comments'].forEach(comment =>{
+      //   // $('.comment-username').text(findUser(comment['user_id']))
+        console.log(comment['content'])
         $('.comment-content').text(comment['content'])
         $('.comment-likes').text(comment['likes'])
         $('#edit-comment').attr("href", `/comments/${comment['id']}/edit`)
+      //   })
+      // }
+      // comments().forEach(comment =>{
+      //   $('.comment-div').append(comment)
       })
-      $('.comment-div').append(comments)
     })
   })
 

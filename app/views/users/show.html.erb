@@ -1,7 +1,15 @@
-<h1 id='user-show-header'>My trips.</h1><br>
+<h1 id='user-show-header'>My profile.</h1><br>
 
 
 <div class="wrapper">
-  <%= link_to "Create a new trip.", new_user_trip_path(@user), class:"button create_button", id:"user-show-button" %><br>
-  <%= conditional_content %>
+  <br>
+  <div id="user-buttons">
+    <%= link_to "my trips.", "#", class:"button", id:"my-trips", :'data-id'=> @current_user.id %><br><br>
+    <%= link_to "my destinations.", "#", class:"button", id:"my-destinations", :'data-id'=> @current_user.id %>
+    <!-- <%#= link_to "Create a new trip.", new_user_trip_path(@user), class:"button create_button", id:"user-show-button" %><br> -->
+
+  </div>
+  <div id="user-content">
+    <!-- <%#= conditional_content %> -->
+  </div>
 </div>

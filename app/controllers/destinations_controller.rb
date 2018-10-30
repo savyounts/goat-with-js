@@ -40,6 +40,7 @@ class DestinationsController < ApplicationController
   end
 
   def show
+    render json: @destination
   end
 
   def destroy

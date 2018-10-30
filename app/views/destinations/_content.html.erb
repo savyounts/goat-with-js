@@ -1,17 +1,17 @@
-<p class="location">Location: <%= @destination.city%>, <%= @destination.country %></p><br>
+<p  id="location" class="location">Location: <%= @destination.city%>, <%= @destination.country %></p><br>
 
 <p>Description: <br><br>
-  <%= @destination.description %>
+  <p id="description"> <%= @destination.description %></p>
 </p> <br>
 
 <p>Must-Do's: <br><br>
-  <%= @destination.must_dos %>
+  <p id="must_dos"><%= @destination.must_dos %></p>
 </p> <br>
 
 <p>Don't-Do's: <br><br>
-  <%= @destination.dont_dos %>
+  <p id="dont_dos"><%= @destination.dont_dos %></p>
 </p> <br>
 
 <p>Day-trips: <br><br>
-  <%= @destination.day_trips %>
+  <p id="day_trips"><%= @destination.day_trips %></p>
 </p> <br>

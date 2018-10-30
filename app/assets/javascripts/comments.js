@@ -1,8 +1,8 @@
 
-// Like class
-const Like = () => {
+// Comment class
+const Comment = () => {
   const store = []
-  let likeId = 0
+  let commentId = 0
 
   return class {
     constructor(commentId){

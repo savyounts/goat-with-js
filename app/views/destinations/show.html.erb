@@ -1,19 +1,22 @@
 <div id="header-image" class="<%= random_class %>">
-  <section class="header-box"><%= @destination.name %>.</section><br>
+  <section id='dest-name' class="header-box"><%= @destination.name %>.</section><br>
 </div>
 <br>
 
 <!-- Content -->
 <div class="wrapper show-wrapper">
+
   <section class="dest-info">
     <%= render 'content' %>
 
     <div class="action-buttons">
-      <%= link_to "Add to my trip", new_destination_plan_path(@destination) %><br>
+      <%= link_to "Add to my trip", new_destination_plan_path(@destination), id:'add' %><br>
+
       <% if @destination.creator == @current_user %>
-        <%= link_to "Update this destination", edit_destination_path(@destination)%><br>
-        <%= link_to "Delete this destination", @destination, method: :delete %>
+        <%= link_to "Update this destination", edit_destination_path(@destination), id:'update'%><br>
+        <%= link_to "Delete this destination", @destination, method: :delete, id:'delete' %>
       <% end %>
+
     </div>
 
   </section>
@@ -21,6 +24,8 @@
 <!-- Comments -->
   <section class="comments">
     <br><br>
+    <%= link_to "Next Destination", "#", :"data-destId" => @destination.id, id: "next-button", class:"button"%><br>
+    <br>
 
     <p>Comments:</p>
     <div class="comment-div">

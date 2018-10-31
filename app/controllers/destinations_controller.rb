@@ -40,6 +40,7 @@ class DestinationsController < ApplicationController
   end
 
   def show
+    @comment = @destination.comments.build(user_id: current_user.id)
     respond_to do |format|
       format.html {render :show}
       format.json {render json: @destination}

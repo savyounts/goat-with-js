@@ -1,5 +1,7 @@
 $( document ).ready(function() {
 
+  $('#comment-form').hide()
+
   $('#next-button').on('click', (e) => {
     e.preventDefault()
     let nextId = parseInt($("#next-button").attr("data-destId")) + 1
@@ -25,6 +27,7 @@ $( document ).ready(function() {
 
 
       // Comments
+      $('.comment-div').html("")
       destination['comments'].forEach(comment =>{
       //   // $('.comment-username').text(findUser(comment['user_id']))
         let new_comment = HandlebarsTemplates['comments-template']({comment: comment})
@@ -33,8 +36,21 @@ $( document ).ready(function() {
           $('#edit-comment').hide()
         }
       })
+
+      // comment form
+      $('#comment-form-userId').attr("value", `${current_user}`)
+      $('#comment-form-destinationId').attr("value", `${destination['id']}`)
+      $('#comment-form-content').attr('placeholder', "leave message here")
     })
   })
+
+  // show comment form
+  $('#leave-message').on('click', (e) =>{
+    e.preventDefault()
+    $('#comment-form').show()
+  })
+
+
 
 
 

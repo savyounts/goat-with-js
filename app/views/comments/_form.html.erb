@@ -1,8 +1,7 @@
-<div class="wrapper">
+
   <%= form_for @comment do |f| %>
-    <%= f.hidden_field :user_id, value: @current_user.id %>
-    <%= f.hidden_field :destination_id, value: @destination.id %>
-    <%= f.text_area :content, placeholder: "leave message here" %><br>
+    <%= f.hidden_field :user_id, value: @current_user.id, id:'comment-form-userId' %>
+    <%= f.hidden_field :destination_id, value: @destination.id, id:'comment-form-destinationId' %>
+    <%= f.text_area :content, placeholder: "leave message here", id:'comment-form-content' %><br>
     <%= f.submit "post comment" %>
   <% end %>
-</div>

@@ -34,6 +34,11 @@
         <%= render 'comments' %>
     </div>
 
-    <%= link_to "Leave a suggestion", new_destination_comment_path(@destination), class:"button" %><br><br>
+    <%= link_to "Leave a suggestion", new_destination_comment_path(@destination), class:"button", id:"leave-message" %>
+    <br><br>
+    <div id="comment-form">
+      <%= render 'comments/form' %>
+    </div>
+    <br><br>
   </section>
 </div>

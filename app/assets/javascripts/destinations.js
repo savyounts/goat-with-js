@@ -91,7 +91,7 @@ $('.submit-comment').on('click', (e) => {
         'content' : $( '.comment-textarea' ).val()
     }
   };
-  $('#comment-textarea').val('').attr('placeholder', "leave message here")
+  $('.comment-textarea').val('').attr('placeholder', "leave message here")
   var posting = $.post('/comments', data);
 
   posting.done(function(data) {

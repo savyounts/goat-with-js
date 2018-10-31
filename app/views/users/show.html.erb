@@ -4,15 +4,10 @@
 <div class="wrapper">
   <br>
   <div id="user-buttons">
-    <%= link_to "my trips.", "#", class:"button", id:"my-trips", :'data-id'=> @current_user.id %><br><br>
-    <%= link_to "my destinations.", "#", class:"button", id:"my-destinations", :'data-id'=> @current_user.id %>
-    <!-- <%#= link_to "Create a new trip.", new_user_trip_path(@user), class:"button create_button", id:"user-show-button" %><br> -->
-
+    <%= link_to "my trips.", "#", class:"button my-trips", :'data-id'=> @current_user.id %><br><br>
+    <%= link_to "my destinations.", "#", class:"button my-destinations",  :'data-id'=> @current_user.id %>
   </div>
   <br>
   <br>
-  <div id="user-content">
-
-  </div>
+  <div id="user-content"></div>
 </div>
-    <!-- <%#= conditional_content %> -->

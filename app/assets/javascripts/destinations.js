@@ -3,6 +3,7 @@ $( document ).ready(function() {
   $('#next-button').on('click', (e) => {
     e.preventDefault()
     let nextId = parseInt($("#next-button").attr("data-destId")) + 1
+    let current_user
     $.get(`/destinations/${nextId}.json`, (destination) =>{
       // destination content
       $('#dest-name').text(destination['name'])
@@ -12,10 +13,16 @@ $( document ).ready(function() {
       $('#dont_dos').text(destination['dont_dos'])
       $('#day_trips').text(destination['day_trips'])
       // button links
-      $('#update').attr("href", `/destinations/${nextId}/edit`)
+      $('#next-button').attr("data-destId", destination["id"])
       $('#add').attr("href", `/destinations/${nextId}/plans/new`)
       $('#delete').attr("href", `/destinations/${nextId}`)
-      $('#next-button').attr("data-destId", destination["id"])
+      $('#update').attr("href", `/destinations/${nextId}/edit`)
+
+      // conditional buttons
+      if(current_user !== destination.creator_id){
+        $('#conditional-buttons').hide()
+      }
+
 
       // Comments
       // let comments = () =>{

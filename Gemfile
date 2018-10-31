@@ -35,7 +35,7 @@ gem 'dotenv-rails'
 gem 'active_model_serializers'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'rails-ujs', '~> 0.1.0'
-
+gem 'handlebars_assets'
 
 
 # Use ActiveStorage variant

@@ -1,5 +1,11 @@
 $( document ).ready(function() {
 
+// handlebar helper
+  Handlebars.registerHelper('random_class', () => {
+    return `random-background-${Math.floor((Math.random()*7)+1)}`
+  })
+
+
   $('#my-destinations').on('click', (e) =>{
     e.preventDefault()
     let id = $('#my-destinations').attr("data-id")
@@ -11,10 +17,9 @@ $( document ).ready(function() {
       $('#user-buttons').html(myTrips + createDestination)
 
       // content
-      let source   = $("#destinations-template").innerHTML;
-      let template = Handlebars.compile(source)
-      $('#user-content').html(template)
+      let destinationHtml = HandlebarsTemplates['my-destinations-template']({destination: user['custom_destinations']})
 
+      $('#user-content').html(destinationHtml)
     })
     })
 

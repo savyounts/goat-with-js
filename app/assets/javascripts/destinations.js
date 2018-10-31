@@ -46,9 +46,6 @@ $( document ).ready(function() {
       //   // $('.comment-username').text(findUser(comment['user_id']))
         let new_comment = HandlebarsTemplates['comments-template']({comment: comment})
         $('.comment-div').append(new_comment)
-        if(current_user !== comment['user_id']){
-          $('#edit-comment').hide()
-        }
       })
 
       // comment form
@@ -94,6 +91,7 @@ $('.submit-comment').on('click', (e) => {
         'content' : $( '.comment-textarea' ).val()
     }
   };
+  $('#comment-textarea').val('').attr('placeholder', "leave message here")
   var posting = $.post('/comments', data);
 
   posting.done(function(data) {
@@ -101,8 +99,6 @@ $('.submit-comment').on('click', (e) => {
     $('.comment-div').append(new_comment)
     $('#comment-form').hide()
     $('.show-form').show()
-    $('#comment-textarea').attr('placeholder', "leave message here")
-
   });
 })
 

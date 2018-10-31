@@ -4,8 +4,6 @@
       <span class="comment-username"><%= c.user.username.capitalize %> says:</span><br><br>
       <span class="comment-content"><%= c.content %></span><br><br>
       <span class="comment-likes"><%= c.likes %></span>
-      <%= link_to "edit.", edit_destination_comment_path(@destination, c), :"data-commentId" => c.id, id:"edit-comment", class: "comment-links" if c.user == @current_user%>
-
       <%= link_to "like.", "#", :"data-commentId" => c.id, id: "like-button", class: "comment-links" %>
 
       <%= link_to "dislike.", "#", :"data-commentId" => c.id, id: "dislike-button", class: "comment-links" %>

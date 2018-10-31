@@ -34,12 +34,13 @@
         <%= render 'comments' %>
     </div>
 
-    <br><br>
+    <br>
     <!-- button to show comments form -->
     <%= link_to "Leave a suggestion", "#", class:"button show-form" %>
     <div id="comment-form">
-      <textarea class="comment-textarea" placeholder="leave a message here."></textarea>
       <%= link_to "Post comment", "#", class:"button submit-comment", :'data-destination_id' => @destination.id, :'data-user_id' => @current_user.id  %>
+      <br><br>
+      <textarea class="comment-textarea" placeholder="leave a message here."></textarea>
       <%#= render 'comments/form' %>
     </div>
     <br><br>

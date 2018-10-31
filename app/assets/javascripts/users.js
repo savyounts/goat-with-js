@@ -10,7 +10,7 @@ $( document ).ready(function() {
   })
 
 // click my destinations
-  $('.my-destinations').on('click', (e) =>{
+  $('body').on('click', '.my-destinations',  (e) =>{
     e.preventDefault()
     let id = $('.my-destinations').attr("data-id")
     $.get(`/users/${id}.json`, (user) =>{
@@ -28,7 +28,7 @@ $( document ).ready(function() {
   })
 
 // click my trips
-    $('.my-trips').on('click', (e) =>{
+    $('body').on('click', '.my-trips', (e) =>{
       e.preventDefault()
       let id = $('.my-trips').attr("data-id")
       $.get(`/users/${id}.json`, (user) =>{

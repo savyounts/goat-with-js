@@ -14,7 +14,11 @@ class CommentsController < ApplicationController
   def create
     comment = Comment.new(comment_params)
     if comment.save
-      redirect_to destination_path(comment.destination)
+      render json: comment, status: 201
+      # respond_to do |format|
+      #   format.html {render destination_path(comment.destination)}
+      #   format.json {render json: comment, status: 201}
+      # end
     else
       render 'new'
     end

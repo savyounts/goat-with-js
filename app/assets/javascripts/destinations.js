@@ -9,9 +9,9 @@ $( document ).ready(function() {
       $('#dest-name').text(destination['name'])
       $('#location').text(`Location: ${destination['city']}, ${destination['country']}`)
       $('#description').text(destination['description'])
-      $('#must_dos').text(destination['must_dos'])
-      $('#dont_dos').text(destination['dont_dos'])
-      $('#day_trips').text(destination['day_trips'])
+      if (destination['must_dos']){$('#must_dos').text(destination['must_dos'])}
+      if (destination['dont_dos']){$('#dont_dos').text(destination['dont_dos'])}
+      if (destination['day_trips']){$('#day_trips').text(destination['day_trips'])}
       // button links
       $('#next-button').attr("data-destId", destination["id"])
       $('#add').attr("href", `/destinations/${nextId}/plans/new`)
@@ -25,17 +25,13 @@ $( document ).ready(function() {
 
 
       // Comments
-      // let comments = () =>{
-        destination['comments'].forEach(comment =>{
+      destination['comments'].forEach(comment =>{
       //   // $('.comment-username').text(findUser(comment['user_id']))
-        console.log(comment['content'])
-        $('.comment-content').text(comment['content'])
-        $('.comment-likes').text(comment['likes'])
-        $('#edit-comment').attr("href", `/comments/${comment['id']}/edit`)
-      //   })
-      // }
-      // comments().forEach(comment =>{
-      //   $('.comment-div').append(comment)
+        let new_comment = HandlebarsTemplates['comments-template']({comment: comment})
+        $('.comment-div').append(new_comment)
+        if(current_user !== comment['user_id']){
+          $('#edit-comment').hide()
+        }
       })
     })
   })

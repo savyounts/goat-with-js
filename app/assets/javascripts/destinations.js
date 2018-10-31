@@ -81,26 +81,6 @@ $( document ).ready(function() {
 //   });
 // })
 
-$('.submit-comment').on('click', (e) => {
-  e.preventDefault()
-  var $button = $('.submit-comment');
-  let data = {comment: {
-        'action' : '/comments',
-        'user_id': $button.data("user_id"),
-        'destination_id': $button.data("destination_id"),
-        'content' : $( '.comment-textarea' ).val()
-    }
-  };
-  $('.comment-textarea').val('').attr('placeholder', "leave message here")
-  var posting = $.post('/comments', data);
-
-  posting.done(function(data) {
-    let new_comment = HandlebarsTemplates['comments-template']({comment: data})
-    $('.comment-div').append(new_comment)
-    $('#comment-form').hide()
-    $('.show-form').show()
-  });
-})
 
 
 

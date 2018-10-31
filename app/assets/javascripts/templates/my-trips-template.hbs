@@ -1,0 +1,20 @@
+{{#each trip}}
+  <div class=" div_card {{#if completed}} completed-trip {{else}} trip_size{{/if}}">
+
+    <div class="inner-pic {{random_class}}"> </div>
+
+    <p class="trip-name">{{occasion}}</p><br>
+
+    <ul class="trip-destinations">
+       {{#each destinations}}
+        <p> {{name}}</p>
+      {{/each}}
+    </ul>
+
+    <div class="edit-links">
+      <a href="/users/?/trips/{{id}}/edit">edit</a>
+      <a href="/users/?/trips/{{id}}" data-method="delete">delete</a>
+    </div>
+
+  </div>
+{{/each}}

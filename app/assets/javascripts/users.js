@@ -5,7 +5,11 @@ $( document ).ready(function() {
     return `random-background-${Math.floor((Math.random()*7)+1)}`
   })
 
+  Handlebars.registerHelper('random_image', () => {
+    return `/images/${Math.floor((Math.random()*7)+1)}.jpg`
+  })
 
+// click my destinations
   $('#my-destinations').on('click', (e) =>{
     e.preventDefault()
     let id = $('#my-destinations').attr("data-id")
@@ -21,20 +25,24 @@ $( document ).ready(function() {
 
       $('#user-content').html(destinationHtml)
     })
-    })
+  })
 
+// click my trips
     $('#my-trips').on('click', (e) =>{
       e.preventDefault()
       let id = $('#my-trips').attr("data-id")
       $.get(`/users/${id}.json`, (user) =>{
         $('#user-show-header').text("My trips.")
+        // buttons
         let myDestinations = `<a class= "button" href="#" id="my-destinations" data-id="${id}">my destinations.</a>`
         let createTrip = `<a class= "button create_button" href="/users/${id}/trips/new">Create a new trip.</a>`
         $('#user-buttons').html(myDestinations + createTrip)
-        // $('#user-content').html(create handlebar template)
-
+        // content
+        let tripsHtml = HandlebarsTemplates['my-trips-template']({trip: user['trips']})
+        
+        $('#user-content').html(tripsHtml)
       })
-      })
+    })
 
 
 

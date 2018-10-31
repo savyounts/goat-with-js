@@ -1,15 +1,12 @@
 $( document ).ready(function() {
 // Comment class
-function creatComment(){
-  const store = []
-  let commentId = 0
-
-  return class {
-    constructor(content){
-      this.id = ++commentId
-      this.content = content
+const store = {comments:[]}
+class Comment{
+    constructor(json){
+      this.id =
+      this.content =
       this.likes = 0
-      store.push(this)
+      store.comments.push(this)
     }
 
     add_like(){
@@ -24,18 +21,18 @@ function creatComment(){
     }
   }
 
-}
-
 // like/dislike functions
 
-function findComment(link){
-  return store.find(comment => comment['id'] === link.data('commentId'))
+function findComment(id){
+  return store.comments.find(comment => comment['id'] === id)
 }
 
 $('.like-button').on('click', (e)=>{
   e.preventDefault()
-  let likedComment = findComment(this)
-  likedComment.add_like()
+  let commentId = $('.like-button').attr("data-commentid")
+  let likedComment = findComment(commentId)
+  console.log(likedComment)
+  // likedComment.add_like()
 })
 
 
@@ -43,7 +40,7 @@ $('.like-button').on('click', (e)=>{
 
 $('.submit-comment').on('click', (e) => {
   e.preventDefault()
-  var $button = $('.submit-comment');
+  let $button = $('.submit-comment');
   let data = {comment: {
         'action' : '/comments',
         'user_id': $button.data("user_id"),
@@ -52,13 +49,14 @@ $('.submit-comment').on('click', (e) => {
     }
   };
   $('.comment-textarea').val('').attr('placeholder', "leave message here")
-  var posting = $.post('/comments', data);
+  let posting = $.post('/comments', data);
 
   posting.done(function(data) {
     let new_comment = HandlebarsTemplates['comments-template']({comment: data})
     $('.comment-div').append(new_comment)
     $('#comment-form').hide()
     $('.show-form').show()
+    // new Comment(data)
   });
 })
 

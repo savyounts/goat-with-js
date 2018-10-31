@@ -3,30 +3,25 @@ $( document ).ready(function() {
   $('#comment-form').hide()
   // $('#comment-submit').hide()
 
-  $('#next-button').on('click', (e) => {
+  $('.wrapper').on('click', '#next-button', (e) => {
     e.preventDefault()
     let nextId = parseInt($("#next-button").attr("data-destId")) + 1
-    let current_user
+    let current_user_id = parseInt($('#user').attr("data-user_id"))
+
     $.get(`/destinations/${nextId}.json`, (destination) =>{
       // destination content
       $('#dest-name').text(destination['name'])
       $('#location').text(`Location: ${destination['city']}, ${destination['country']}`)
       $('#description').text(destination['description'])
-      if (destination['must_dos']){
-        $('#must_dos').text(destination['must_dos'])
-      }else{
-        $('#must_dos').text("")
-      }
-      if (destination['dont_dos']){
-        $('#dont_dos').text(destination['dont_dos'])
-      }else{
-        $('#dont_dos').text("")
-      }
-      if (destination['day_trips']){
-        $('#day_trips').text(destination['day_trips'])
-      }else{
-        $('#day_trips').text("")
-      }
+
+      let md = destination['must_dos'] ? destination['must_dos'] : ""
+      $('#must_dos').text(md)
+
+      let dd = destination['dont_dos'] ? destination['dont_dos'] : ""
+      $('#dont_dos').text(dd)
+
+      let dt = destination['day_trips'] ? destination['day_trips'] : ""
+      $('#day_trips').text(dt)
 
       // button links
       $('#next-button').attr("data-destId", destination["id"])
@@ -35,25 +30,28 @@ $( document ).ready(function() {
       $('#update').attr("href", `/destinations/${nextId}/edit`)
 
       // conditional buttons
-      if(current_user !== destination.creator_id){
+      if(current_user_id !== destination.creator_id){
         $('#conditional-buttons').hide()
+      }else{
+        $('#conditional-buttons').show()
       }
 
 
       // Comments
       $('.comment-div').html("")
       destination['comments'].forEach(comment =>{
-      //   // $('.comment-username').text(findUser(comment['user_id']))
+        // let comment.username =
         let new_comment = HandlebarsTemplates['comments-template']({comment: comment})
         $('.comment-div').append(new_comment)
       })
 
       // comment form
-      $('#comment-form-userId').attr("value", `${current_user}`)
+      $('#comment-form-userId').attr("value", `${current_user_id}`)
       $('#comment-form-destinationId').attr("value", `${destination['id']}`)
       $('#comment-form-content').attr('placeholder', "leave message here")
     })
   })
+
 
   // show comment form
   // $('.show-form').on('click', (e) =>{

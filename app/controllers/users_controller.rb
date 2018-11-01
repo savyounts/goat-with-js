@@ -17,10 +17,13 @@ class UsersController < ApplicationController
   def show
     if logged_in?
       @user = User.find_by(id: params[:id])
-      redirect_to user_path(current_user) if @user != current_user
-      respond_to do |format|
-        format.html {render :show}
-        format.json {render json: current_user}
+      if @user != current_user
+        redirect_to user_path(current_user)
+      else
+        respond_to do |format|
+          format.html {render :show}
+          format.json {render json: current_user}
+        end
       end
     else
       require_login

@@ -4,7 +4,7 @@ $( document ).ready(function() {
 
   // $('#comment-submit').hide()
 
-  $('#next-button').on('click', (e) => {
+  $('.comments').on('click', '#next-button', (e) => {
     e.preventDefault()
     let nextId = parseInt($("#next-button").attr("data-destId")) + 1
     let current_user_id = parseInt($('#user').attr("data-user_id"))

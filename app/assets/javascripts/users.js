@@ -12,38 +12,37 @@ $( document ).ready(function() {
 // click my destinations
   $('#user-buttons').on('click', '.my-destinations',  (e) =>{
     e.preventDefault()
-    let id = $('.my-destinations').attr("data-id")
-    $.get(`/users/${id}.json`, (user) =>{
-      $('#user-show-header').text("My destinations.")
-      // buttons
-      let myTrips = `<a class="button my-trips" data-id="${id}" href="#">my trips.</a>`
-      let createDestination = `<a class= "button create_button" href="/destinations/new">Create a new destination.</a>`
-      $('#user-buttons').html(myTrips + createDestination)
-
-      // content
-      let destinationHtml = HandlebarsTemplates['my-destinations-template']({destination: user['custom_destinations']})
-
-      $('#user-content').html(destinationHtml)
-    })
+    updatePage('destination', 'trips', 'custom_destination')
   })
 
 // click my trips
     $('#user-buttons').on('click', '.my-trips', (e) =>{
       e.preventDefault()
-      let id = $('.my-trips').attr("data-id")
-      $.get(`/users/${id}.json`, (user) =>{
-        $('#user-show-header').text("My trips.")
-        // buttons
-        let myDestinations = `<a class= "button my-destinations" href="#" data-id="${id}">my destinations.</a>`
-        let createTrip = `<a class= "button create_button" href="/users/${id}/trips/new">Create a new trip.</a>`
-        $('#user-buttons').html(myDestinations + createTrip)
-        // content
-        let tripsHtml = HandlebarsTemplates['my-trips-template']({trip: user['trips']})
-
-        $('#user-content').html(tripsHtml)
-      })
+      updatePage('trip', 'destinations')
     })
 
+const updatePage = (object, other, custom) => {
+  let id = $(`.my-${object}s`).attr("data-id")
+  $.get(`/users/${id}.json`, (user) =>{
+    $('#user-show-header').text(`My ${object}s.`)
 
+    // buttons
+    let createTrip = createButton(id, object)
+    $('#user-buttons').html(displayOtherButton(id, other) + createTrip)
+
+    // content
+    let contentHtml = HandlebarsTemplates[`my-${object}s-template`]({object: user[`${custom || object}s`]})
+    $('#user-content').html(contentHtml)
+  })
+}
+
+
+const createButton = (id, object) => {
+  return `<a class= "button create_button" href="/users/${id}/${object}s/new">Create a new ${object}.</a>`
+}
+
+const displayOtherButton = (id, other) =>{
+  return `<a class= "button my-${other}" href="#" data-id="${id}">my ${other}.</a>`
+}
 
 })

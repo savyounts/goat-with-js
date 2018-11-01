@@ -94,7 +94,7 @@ $('.submit-comment').on('click', (e) => {
     $('.comment-div').append(new_comment.toString())
     $('#comment-form').hide()
     $('.show-form').show()
-    console.log(store)
+    console.log(new_comment.toString())
   });
 })
 

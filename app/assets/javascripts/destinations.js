@@ -2,7 +2,9 @@ $( document ).ready(function() {
 
   $('#comment-form').hide()
 
-  $('.wrapper').on('click', '#next-button', (e) => {
+  // $('#comment-submit').hide()
+
+  $('#next-button').on('click', (e) => {
     e.preventDefault()
     let nextId = parseInt($("#next-button").attr("data-destId")) + 1
     let current_user_id = parseInt($('#user').attr("data-user_id"))
@@ -27,6 +29,7 @@ $( document ).ready(function() {
       $('#add').attr("href", `/destinations/${nextId}/plans/new`)
       $('#delete').attr("href", `/destinations/${nextId}`)
       $('#update').attr("href", `/destinations/${nextId}/edit`)
+      $('.submit-comment').attr("data-destination_id", nextId)
 
       // conditional buttons
       if(current_user_id !== destination.creator_id){
@@ -37,17 +40,12 @@ $( document ).ready(function() {
 
 
       // Comments
-      let commentDiv = $('.comment-div')
-      // destination['comments'] ? commentDiv.show().html("") : commentDiv.hide()
-      commentDiv.html('')
-      const createComments = () => {
-        destination['comments'].forEach(comment =>{
-          // let comment.username =
-          let new_comment = HandlebarsTemplates['comments-template']({comment: comment})
-          $('.comment-div').append(new_comment)
-        })
-      }
-      if (destination['comments']){createComments()}
+      $('.comment-div').show().html("")
+      destination['comments'].forEach(comment =>{
+        // let comment.username =
+        let new_comment = HandlebarsTemplates['comments-template']({comment: comment})
+        $('.comment-div').append(new_comment)
+      })
     })
   })
 

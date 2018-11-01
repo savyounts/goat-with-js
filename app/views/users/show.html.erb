@@ -4,10 +4,12 @@
 <div class="wrapper">
   <br>
   <div id="user-buttons">
-    <%= link_to "my trips.", "#", class:"button my-trips", :'data-id'=> @current_user.id %><br><br>
     <%= link_to "my destinations.", "#", class:"button my-destinations",  :'data-id'=> @current_user.id %>
+    <%= link_to "Create a new trip.", new_user_trip_path(@current_user), class:"button create_button" %>
   </div>
   <br>
   <br>
-  <div id="user-content"></div>
+  <div id="user-content">
+    <%= render "content" %>
+  </div>
 </div>

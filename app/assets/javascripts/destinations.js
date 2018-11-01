@@ -1,13 +1,14 @@
 $( document ).ready(function() {
 
-  const hideElements = () => {
+  $('#comment-form').hide()
+
+  const hideButtons = () => {
     let next = $('#next-button')
     let previous = $('#previous-button')
-    $('#comment-form').hide()
     if (previous.attr("data-destId") === "1") {previous.hide()}
     if (next.attr("data-last-dest") === next.attr("data-destId")) {next.hide()}
   }
-  hideElements()
+  hideButtons()
 
   $('.comments').on('click', '#next-button', (e) => {
     e.preventDefault()
@@ -41,6 +42,7 @@ $( document ).ready(function() {
       // button links
       $('#next-button').show().attr("data-destId", destinationId)
       $('#previous-button').show().attr("data-destId", destinationId)
+      hideButtons()
       $('#add').attr("href", `/destinations/${destinationId}/plans/new`)
       $('#delete').attr("href", `/destinations/${destinationId}`)
       $('#update').attr("href", `/destinations/${destinationId}/edit`)

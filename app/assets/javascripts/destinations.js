@@ -12,9 +12,18 @@ $( document ).ready(function() {
   $('.comments').on('click', '#next-button', (e) => {
     e.preventDefault()
     let nextId = parseInt($("#next-button").attr("data-destId")) + 1
-    let current_user_id = parseInt($('#user').attr("data-user_id"))
+    updatePage(nextId)
+  })
 
-    $.get(`/destinations/${nextId}.json`, (destination) =>{
+  $('.comments').on('click', '#previous-button', (e) => {
+    e.preventDefault()
+    let previousId = parseInt($("#previous-button").attr("data-destId")) - 1
+    updatePage(previousId)
+  })
+
+  const updatePage = (destinationId) =>{
+    let current_user_id = parseInt($('#user').attr("data-user_id"))
+    $.get(`/destinations/${destinationId}.json`, (destination) =>{
       // destination content
       $('#dest-name').text(destination['name'])
       $('#location').text(`Location: ${destination['city']}, ${destination['country']}`)
@@ -30,12 +39,12 @@ $( document ).ready(function() {
       $('#day_trips').text(dt)
 
       // button links
-      $('#next-button').show().attr("data-destId", destination["id"])
-      $('#previous-button').show().attr("data-destId", destination["id"])
-      $('#add').attr("href", `/destinations/${destination["id"]}/plans/new`)
-      $('#delete').attr("href", `/destinations/${destination["id"]}`)
-      $('#update').attr("href", `/destinations/${destination["id"]}/edit`)
-      $('.submit-comment').attr("data-destination_id", destination["id"])
+      $('#next-button').show().attr("data-destId", destinationId)
+      $('#previous-button').show().attr("data-destId", destinationId)
+      $('#add').attr("href", `/destinations/${destinationId}/plans/new`)
+      $('#delete').attr("href", `/destinations/${destinationId}`)
+      $('#update').attr("href", `/destinations/${destinationId}/edit`)
+      $('.submit-comment').attr("data-destination_id", destinationId)
 
       // conditional buttons
       if(current_user_id !== destination.creator_id){
@@ -53,8 +62,7 @@ $( document ).ready(function() {
         $('.comment-div').append(new_comment)
       })
     })
-  })
-
+  }
 
   // show comment form
   $('.show-form').on('click', (e) =>{

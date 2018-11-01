@@ -2,6 +2,7 @@ $( document ).ready(function() {
 
   $('#comment-form').hide()
 
+
   // $('#comment-submit').hide()
 
   $('.comments').on('click', '#next-button', (e) => {
@@ -41,7 +42,7 @@ $( document ).ready(function() {
 
       // Comments
       $('.comment-div').html("")
-      destination['comments'].pop() //get rid of extra null comment
+      // destination['comments'].pop() //get rid of extra null comment
       destination['comments'].forEach(comment =>{
         // let comment.username =
         let new_comment = HandlebarsTemplates['comments-template']({comment: comment})

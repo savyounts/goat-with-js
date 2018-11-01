@@ -2,7 +2,9 @@
   <section id='dest-name' class="header-box"><%= @destination.name %>.</section><br>
 </div>
 <br>
+
 <div id="user" data-user_id="<%=@current_user.id%>" data-creator_id="<%=@destination.creator_id%>"/>
+
 <!-- Content -->
 <div class="wrapper show-wrapper">
 
@@ -24,27 +26,30 @@
 <!-- Comments -->
   <section class="comments">
     <br><br>
+    <!-- next/previous buttons -->
     <section class="next-previous">
       <%= link_to "Previous Destination", "#", :"data-destId" => @destination.id, id: "previous-button", class:"button"%>
       <%= link_to "Next Destination", "#", data:{"destId" => @destination.id, "last-dest" => @last.id }, id: "next-button", class:"button"%>
     <section>
     <br><br>
 
-    <p>Comments:</p>
-    <div class="comment-div">
-        <%= render 'comments' %>
-    </div><br>
+    <section>
+      <p>Comments:</p>
+      <div class="comment-div">
+          <%= render 'comments' %>
+      </div><br>
 
-    <!-- button to show comments form -->
-    <%= link_to "Leave a suggestion", "#", class:"button show-form" %>
-    <div id="comment-form">
-      <form>
-        <%= link_to "Post comment", "#", class:"button submit-comment", :'data-destination_id' => @destination.id, :'data-user_id' => @current_user.id  %>
-        <br><br>
+      <!-- button to show comments form -->
+      <%= link_to "Leave a suggestion", "#", class:"button show-form" %>
+      <div id="comment-form">
+        <form>
+          <%= link_to "Post comment", "#", class:"button submit-comment", :'data-destination_id' => @destination.id, :'data-user_id' => @current_user.id  %>
+          <br><br>
 
-        <textarea class="comment-textarea" placeholder="leave a message here."></textarea>
-      </form>
-    </div>
+          <textarea class="comment-textarea" placeholder="leave a message here."></textarea>
+        </form>
+      </div>
+    </section>
     <br><br>
   </section>
 </div>

@@ -1,9 +1,13 @@
 $( document ).ready(function() {
 
-  $('#comment-form').hide()
-
-
-  // $('#comment-submit').hide()
+  const hideElements = () => {
+    let next = $('#next-button')
+    let previous = $('#previous-button')
+    $('#comment-form').hide()
+    if (previous.attr("data-destId") === "1") {previous.hide()}
+    if (next.attr("data-last-dest") === next.attr("data-destId")) {next.hide()}
+  }
+  hideElements()
 
   $('.comments').on('click', '#next-button', (e) => {
     e.preventDefault()
@@ -26,7 +30,8 @@ $( document ).ready(function() {
       $('#day_trips').text(dt)
 
       // button links
-      $('#next-button').attr("data-destId", destination["id"])
+      $('#next-button').show().attr("data-destId", destination["id"])
+      $('#previous-button').show().attr("data-destId", destination["id"])
       $('#add').attr("href", `/destinations/${destination["id"]}/plans/new`)
       $('#delete').attr("href", `/destinations/${destination["id"]}`)
       $('#update').attr("href", `/destinations/${destination["id"]}/edit`)
@@ -42,7 +47,6 @@ $( document ).ready(function() {
 
       // Comments
       $('.comment-div').html("")
-      // destination['comments'].pop() //get rid of extra null comment
       destination['comments'].forEach(comment =>{
         // let comment.username =
         let new_comment = HandlebarsTemplates['comments-template']({comment: comment})

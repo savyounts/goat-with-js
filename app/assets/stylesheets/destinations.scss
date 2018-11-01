@@ -66,8 +66,12 @@ h1 {
 
 // COMMENTS
 #next-button{
+  right: 0;
+}
+
+.next-previous a{
   display: inline-block;
-  right: 10px;
+  float: left;
 }
 
 .comments {

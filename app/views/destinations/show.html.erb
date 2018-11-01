@@ -26,9 +26,11 @@
 <!-- Comments -->
   <section class="comments">
     <br><br>
-    <%= link_to "Previous Destination", "#", :"data-destId" => @destination.id, id: "previous-button", class:"button"%><br>
-    <%= link_to "Next Destination", "#", data:{"destId" => @destination.id, "last-dest" => @last.id }, id: "next-button", class:"button"%><br>
-    <br>
+    <section class="next-previous">
+    <%= link_to "Previous Destination", "#", :"data-destId" => @destination.id, id: "previous-button", class:"button"%>
+    <%= link_to "Next Destination", "#", data:{"destId" => @destination.id, "last-dest" => @last.id }, id: "next-button", class:"button"%>
+    <section>
+    <br><br>
 
     <p>Comments:</p>
     <div class="comment-div">

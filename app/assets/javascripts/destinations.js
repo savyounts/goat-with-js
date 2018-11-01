@@ -44,45 +44,16 @@ $( document ).ready(function() {
         let new_comment = HandlebarsTemplates['comments-template']({comment: comment})
         $('.comment-div').append(new_comment)
       })
-
-      // comment form
-      $('#comment-form-userId').attr("value", `${current_user_id}`)
-      $('#comment-form-destinationId').attr("value", `${destination['id']}`)
-      $('#comment-form-content').attr('placeholder', "leave message here")
     })
   })
 
 
   // show comment form
-  // $('.show-form').on('click', (e) =>{
-  //   e.preventDefault()
-  //   $('#comment-submit').show()
-  // })
-
   $('.show-form').on('click', (e) =>{
     e.preventDefault()
     $('.show-form').hide()
     $('#comment-form').slideDown('slow')
   })
-
-// submit comment form
-
-// $('#comment-submit').submit((e) => {
-//   e.preventDefault()
-//   let values = $('#comment-submit').serialize()
-//   console.log(values)
-//   let posting = $.post('/comments', values);
-//
-//   posting.done(function(data) {
-//     let new_comment = HandlebarsTemplates['comments-template']({comment: data})
-//     $('.comment-div').append(new_comment)
-//   });
-// })
-
-
-
-
-
 
 
 })

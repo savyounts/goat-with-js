@@ -1,6 +1,6 @@
 class DestinationsController < ApplicationController
   before_action :require_login, :current_user, :set_destination
-  skip_before_action :require_login, :only => [:index, :show]
+  skip_before_action :require_login, :only => [:index]
   skip_before_action :set_destination, :only => [:index, :new, :create]
 
 

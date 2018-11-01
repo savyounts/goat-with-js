@@ -3,10 +3,11 @@
     <p>
       <!-- <span class="comment-username"><%= c.user.username.capitalize %> says:</span><br><br> -->
       <span class="comment-content"><%= c.content %></span><br><br>
-      <span class="comment-likes"><%= c.likes %></span>
-      <%= link_to "like.", "#", :"data-commentId" => c.id, class: "comment-links like-button" %>
+      <span class="comment-likes" id="comment-<%= c.id %>-likes"><%= c.likes %></span>
+      <%= link_to "like.", "#", data: {"commentId"=> c.id, "likes"=> c.likes, "destination" => c.destination_id}, class: "comment-links like-button" %>
+      <%= link_to "edit.", edit_destination_comment_path(@destination, c), class: "comment-links" if c.user == @current_user %>
 
-      <%= link_to "dislike.", "#", :"data-commentId" => c.id, id: "dislike-button", class: "comment-links" %>
+      <%= link_to "dislike.", "#", :"data-commentId" => c.id, :'data-likes'=> c.likes, id: "dislike-button", class: "comment-links" %>
     </p>
   </div><br>
 <% end %>

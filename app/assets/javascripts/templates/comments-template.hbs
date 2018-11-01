@@ -2,8 +2,9 @@
     <p>
       <!-- <span class="comment-username">{{comment.username}} says:</span><br><br> -->
       <span class="comment-content">{{comment.content}}</span><br><br>
-      <span class="comment-likes">{{comment.likes}}</span>
-      <a data-commentid="{{comment.id}}" id="like-button" class="comment-links" href="#">like.</a>
-      <a data-commentid="{{comment.id}}" id="dislike-button" class="comment-links" href="#">dislike.</a>
+      <span class="comment-likes comment-{{comment.id}}-likes">{{comment.likes}}</span>
+
+      <a data-commentId="{{comment.id}}" data-likes="{{comment.likes}}" data-destination="{{comment.destination_id}}" id="like-button" class="comment-links" href="#">like.</a>
+      <a data-commentId="{{comment.id}}" data-likes="{{comment.likes}}" id="dislike-button" class="comment-links" href="#">dislike.</a>
     </p>
   </div><br>

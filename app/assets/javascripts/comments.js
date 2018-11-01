@@ -1,12 +1,16 @@
 $( document ).ready(function() {
-// Comment class
-const store = {comments:[]}
-class Comment{
-    constructor(json){
-      this.id =
-      this.content =
+  // Comment class
+  const store = {comments:[]}
+  class Comment{
+    constructor(data){
+      this.id = data.id
+      this.content = data.content
       this.likes = 0
       store.comments.push(this)
+    }
+
+    toString(){
+      return HandlebarsTemplates['comments-template']({comment: this})
     }
 
     add_like(){
@@ -27,12 +31,26 @@ function findComment(id){
   return store.comments.find(comment => comment['id'] === id)
 }
 
-$('.like-button').on('click', (e)=>{
+$('.comment-div').on('click', '.like-button', (e)=>{
   e.preventDefault()
-  let commentId = $('.like-button').attr("data-commentid")
-  let likedComment = findComment(commentId)
-  console.log(likedComment)
-  // likedComment.add_like()
+  let info = $('.like-button').data()
+  let commentId = info.commentId
+  let likes = info.likes
+  let destinationId = info.destination
+  debugger
+  let data = {comment:{
+      likes: (likes + 1)
+    }
+  }
+  let update = $.ajax({
+          url: `/comments/${commentId}`,
+          type: 'PATCH',
+          dataType: "json",
+          data: data
+        });
+  update.done(function(data){
+    $(`#comment-${commentId}-likes`).text(likes)
+  })
 })
 
 
@@ -52,11 +70,11 @@ $('.submit-comment').on('click', (e) => {
   let posting = $.post('/comments', data);
 
   posting.done(function(data) {
-    let new_comment = HandlebarsTemplates['comments-template']({comment: data})
-    $('.comment-div').append(new_comment)
+    let new_comment = new Comment(data)
+    $('.comment-div').append(new_comment.toString())
     $('#comment-form').hide()
     $('.show-form').show()
-    // new Comment(data)
+    console.log(store)
   });
 })
 

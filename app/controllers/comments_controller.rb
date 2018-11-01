@@ -36,12 +36,14 @@ class CommentsController < ApplicationController
 
   def update
     @comment.update(comment_params)
-    my_path
+    render json: @comment, status: 201
+    # my_path
   end
 
   def like
     @comment.like
-    my_path
+    render json: comment, status: 201
+    # my_path
   end
 
   def dislike
@@ -51,7 +53,7 @@ class CommentsController < ApplicationController
 
   private
     def comment_params
-      params.require(:comment).permit(:user_id, :destination_id, :content)
+      params.require(:comment).permit(:user_id, :destination_id, :content, :likes)
     end
 
     def my_path

@@ -26,10 +26,10 @@ $( document ).ready(function() {
 
       // button links
       $('#next-button').attr("data-destId", destination["id"])
-      $('#add').attr("href", `/destinations/${nextId}/plans/new`)
-      $('#delete').attr("href", `/destinations/${nextId}`)
-      $('#update').attr("href", `/destinations/${nextId}/edit`)
-      $('.submit-comment').attr("data-destination_id", nextId)
+      $('#add').attr("href", `/destinations/${destination["id"]}/plans/new`)
+      $('#delete').attr("href", `/destinations/${destination["id"]}`)
+      $('#update').attr("href", `/destinations/${destination["id"]}/edit`)
+      $('.submit-comment').attr("data-destination_id", destination["id"])
 
       // conditional buttons
       if(current_user_id !== destination.creator_id){
@@ -40,7 +40,8 @@ $( document ).ready(function() {
 
 
       // Comments
-      $('.comment-div').show().html("")
+      $('.comment-div').html("")
+      destination['comments'].pop() //get rid of extra null comment
       destination['comments'].forEach(comment =>{
         // let comment.username =
         let new_comment = HandlebarsTemplates['comments-template']({comment: comment})

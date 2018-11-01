@@ -1,7 +1,6 @@
 $( document ).ready(function() {
 
   $('#comment-form').hide()
-  // $('#comment-submit').hide()
 
   $('.wrapper').on('click', '#next-button', (e) => {
     e.preventDefault()
@@ -38,12 +37,17 @@ $( document ).ready(function() {
 
 
       // Comments
-      $('.comment-div').html("")
-      destination['comments'].forEach(comment =>{
-        // let comment.username =
-        let new_comment = HandlebarsTemplates['comments-template']({comment: comment})
-        $('.comment-div').append(new_comment)
-      })
+      let commentDiv = $('.comment-div')
+      // destination['comments'] ? commentDiv.show().html("") : commentDiv.hide()
+      commentDiv.html('')
+      const createComments = () => {
+        destination['comments'].forEach(comment =>{
+          // let comment.username =
+          let new_comment = HandlebarsTemplates['comments-template']({comment: comment})
+          $('.comment-div').append(new_comment)
+        })
+      }
+      if (destination['comments']){createComments()}
     })
   })
 

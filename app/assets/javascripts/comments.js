@@ -34,12 +34,11 @@ function findComment(id){
 $('.comment-div').on('click', '.like-button', (e)=>{
   e.preventDefault()
   let info = $('.like-button').data()
-  let commentId = info.commentId
-  let likes = info.likes
+  let commentId = info.commentid
+  let likes = info.likes + 1
   let destinationId = info.destination
-  debugger
   let data = {comment:{
-      likes: (likes + 1)
+      likes: likes
     }
   }
   let update = $.ajax({
@@ -49,7 +48,28 @@ $('.comment-div').on('click', '.like-button', (e)=>{
           data: data
         });
   update.done(function(data){
-    $(`#comment-${commentId}-likes`).text(likes)
+    $(`#comment-${commentId}-likes`).html(likes)
+  })
+})
+
+$('.comment-div').on('click', '.dislike-button', (e)=>{
+  e.preventDefault()
+  let info = $('.dislike-button').data()
+  let commentId = info.commentid
+  let likes = info.likes - 1
+  let destinationId = info.destination
+  let data = {comment:{
+      likes: likes
+    }
+  }
+  let update = $.ajax({
+          url: `/comments/${commentId}`,
+          type: 'PATCH',
+          dataType: "json",
+          data: data
+        });
+  update.done(function(data){
+    $(`#comment-${commentId}-likes`).html(likes)
   })
 })
 

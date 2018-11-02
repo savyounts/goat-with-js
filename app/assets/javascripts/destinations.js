@@ -43,9 +43,14 @@ $( document ).ready(function() {
     $('#day_trips').text(dt)
 }
 
+const sortComments = (destination) => {
+  return destination.comments.sort((b,a) => (a.likes > b.likes) ? 1 : ((b.likes > a.likes) ? -1 : 0));
+}
+
 const updateComments = (destination) => {
   $('.comment-div').html("")
-  destination.comments.forEach(comment => {
+  let sorted = sortComments(destination)
+  sorted.forEach(comment => {
     let new_comment = HandlebarsTemplates['comments-template']({comment: comment})
     $('.comment-div').append(new_comment)
   })

@@ -4,8 +4,8 @@
       <!-- <span class="comment-username"><%#= c.user.username.capitalize %> says:</span><br><br> -->
       <span class="comment-content"><%= c.content %></span><br><br>
       <span class="comment-likes" id="comment-<%= c.id %>-likes"><%= c.likes %></span>
-      <%= link_to "like.", "#", data: {"commentId"=> c.id, "likes"=> c.likes, "destination" => c.destination_id}, class: "comment-links like-button" %>
-      <%= link_to "dislike.", "#", data: {"commentId"=> c.id, "likes"=> c.likes, "destination" => c.destination_id}, class: "comment-links dislike-button" %>
+      <%= link_to "like.", "#", data: {"id"=> c.id, "likes"=> c.likes, "destination" => c.destination_id}, class: "comment-links like-button", id:"like-button-#{c.id}" %>
+      <%= link_to "dislike.", "#", data: {"id"=> c.id, "likes"=> c.likes, "destination" => c.destination_id}, class: "comment-links dislike-button", id:"dislike-button-#{c.id}" %>
     </p>
   </div><br>
 <% end %>

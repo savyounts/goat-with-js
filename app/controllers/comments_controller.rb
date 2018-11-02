@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
   def like
     @comment.like
     render json: comment, status: 201
-    # my_path
+    my_path
   end
 
   def dislike

@@ -13,33 +13,41 @@ $( document ).ready(function() {
   }
 
 // like/dislike functions
-  const updateLikes = (buttonClass, number) =>{
-      e.preventDefault()
+  const updateLikes = (buttonClass, number, id) =>{
       let info = $(buttonClass).data()
-      let commentId = info.commentid
       let likes = info.likes + number
+      let commentId = id
       let destinationId = info.destination
       let data = {comment:{
-          likes: likes
+          id: commentId,
+          likes: (likes >= 0 ? likes : 0)
         }
       }
+
       let update = $.ajax({
               url: `/comments/${commentId}`,
               type: 'PATCH',
               dataType: "json",
               data: data
             });
-      update.done(function(data){
-        $(`#comment-${commentId}-likes`).html(likes)
+      update.done(function(){
+        $(`#like-button-${commentId}`).attr('data-likes', likes)
+        $(`#dislike-button-${commentId}`).attr('data-likes', likes)
+        $(`#comment-${commentId}-likes`).text(likes)
       })
   }
 
-  $('.comment-div').on('click', '.like-button', (e)=>{
-    updateLikes('.like-button', 1)
+  $('.wrapper').on('click', '.like-button', (e)=>{
+    e.preventDefault()
+
+    const commentId = parseInt(e.target.dataset.id)
+    updateLikes('.like-button', 1, commentId)
   })
 
-  $('.comment-div').on('click', '.dislike-button', (e)=>{
-    updateLikes('.like-button', -1)
+  $('.wrapper').on('click', '.dislike-button', (e)=>{
+    e.preventDefault()
+    const commentId = parseInt(e.target.dataset.id)
+    updateLikes('.like-button', -1, commentId)
   })
 
 

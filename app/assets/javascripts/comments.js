@@ -13,11 +13,10 @@ $( document ).ready(function() {
   }
 
 // like/dislike functions
-  const updateLikes = (buttonClass, number, id) =>{
-      let info = $(buttonClass).data()
-      let likes = info.likes + number
-      let commentId = id
-      let destinationId = info.destination
+  const updateLikes = (button, number, id) =>{
+      let likes = parseInt(button.likes) + number
+      let commentId = button.id
+      let destinationId = button.destination
       let data = {comment:{
           id: commentId,
           likes: (likes >= 0 ? likes : 0)
@@ -33,21 +32,20 @@ $( document ).ready(function() {
       update.done(function(){
         $(`#like-button-${commentId}`).attr('data-likes', likes)
         $(`#dislike-button-${commentId}`).attr('data-likes', likes)
-        $(`#comment-${commentId}-likes`).text(likes)
+        $(`#comment-${commentId}-likes`).text(likes >= 0 ? likes : 0)
       })
   }
 
-  $('.wrapper').on('click', '.like-button', (e)=>{
+  $('.comment-div').on('click', '.like-button', (e)=>{
     e.preventDefault()
-
-    const commentId = parseInt(e.target.dataset.id)
-    updateLikes('.like-button', 1, commentId)
+    let $button = e.target.dataset
+    updateLikes($button, 1)
   })
 
-  $('.wrapper').on('click', '.dislike-button', (e)=>{
+  $('.comment-div').on('click', '.dislike-button', (e)=>{
     e.preventDefault()
-    const commentId = parseInt(e.target.dataset.id)
-    updateLikes('.like-button', -1, commentId)
+    let $button = e.target.dataset
+    updateLikes($button, -1)
   })
 
 

@@ -12,7 +12,7 @@ $( document ).ready(function() {
 // update helpers
   const updatePage = (object, other, custom) => {
     let id = $(`.my-${object}s`).attr("data-id")
-    $.get(`/users/${id}.json`, (user) =>{
+    $.get(`/users/${id}`, (user) =>{
       $('#user-show-header').text(`My ${object}s.`)
 
       // buttons
@@ -22,7 +22,7 @@ $( document ).ready(function() {
       // content
       let contentHtml = HandlebarsTemplates[`my-${object}s-template`]({object: user[`${custom || object}s`]})
       $('#user-content').html(contentHtml)
-    })
+    }, 'json')
   }
 
   const createButton = (id, object) => {

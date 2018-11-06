@@ -2,9 +2,12 @@
 
 <div class="wrapper">
   <%= link_to "New Destination", new_destination_path, class:"button create_button" %><br>
-  <% @destinations.each do |d| %>
-    <div class="destination_size div_card <%= random_class %>">
-      <div class="destination_name"><%= link_to d.name, destination_path(d) %></div><br>
-    </div>
-  <% end %>
+  <section class="destination-container">
+    <% @destinations.each do |d| %>
+      <div class="destination_size div_card <%= random_class %>">
+        <div class="destination_name"><%= link_to d.name, destination_path(d) %></div><br>
+      </div>
+    <% end %>
+  </section>
+  <button id="sort"> Sort Me </button>
 </div>

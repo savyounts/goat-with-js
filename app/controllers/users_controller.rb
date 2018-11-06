@@ -21,7 +21,7 @@ class UsersController < ApplicationController
         redirect_to user_path(current_user)
       else
         respond_to do |format|
-          format.html {render :show}
+          format.html
           format.json {render json: current_user}
         end
       end

@@ -10,7 +10,10 @@ class DestinationsController < ApplicationController
     else
       @destinations = Destination.all
     end
-    render :layout => "application"
+    respond_to do |format|
+      format.html {render :layout => "application"}
+      format.json {render json: @destinations}
+    end
   end
 
 

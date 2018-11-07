@@ -87,27 +87,4 @@ const updateComments = (destination) => {
     $('.show-form').hide()
     $('#comment-form').slideDown('slow')
   })
-
-  // INDEX PAGE
-  const sortPage = () =>{
-    $.get('/destinations', (destinations) =>{
-      destinations.sort(function(a, b){
-        let dest1 = a.name.toUpperCase()
-        let dest2 = b.name.toUpperCase()
-        if(dest1 < dest2) { return -1; }
-        if(dest1 > dest2) { return 1; }
-        return 0;
-      })
-    let contentHtml = HandlebarsTemplates[`my-destinations-template`]({object: destinations})
-    $('.destination-container').html(contentHtml)
-  }, 'json')
-  }
-
-
-    $("#sort").on('click', (e) => { //project review code
-        sortPage()
-      })
-
-
-
 })

@@ -179,11 +179,6 @@ GEM
       loofah (~> 2.2, >= 2.2.2)
     rails-ujs (0.1.0)
       railties (>= 3.1)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
     railties (5.2.1)
       actionpack (= 5.2.1)
       activesupport (= 5.2.1)
@@ -281,7 +276,6 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.1)
   rails-ujs (~> 0.1.0)
-  rails_12factor
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
